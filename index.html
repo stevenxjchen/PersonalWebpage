@@ -1,0 +1,1729 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<meta property="og:title" content="Steven Chen">
+<meta property="og:description" content="Maths and physics student. Runway-overrun alert research, engineering projects, results, daily practice and photos.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 64 64%27%3E%3Crect width=%2764%27 height=%2764%27 rx=%2712%27 fill=%27%230B1F3A%27/%3E%3Ctext x=%2732%27 y=%2742%27 text-anchor=%27middle%27 font-family=%27Arial,Helvetica,sans-serif%27 font-weight=%27700%27 font-size=%2728%27 fill=%27%23F2A900%27%3ESC%3C/text%3E%3C/svg%3E">
+<style>html,body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Steven Chen</title>
+<meta name="description" content="Steven Chen: maths and physics student. Runway-overrun alert research, engineering projects, results, daily practice and photos.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,400..800&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<link rel="preload" as="image" href="img/hero.webp">
+<style>
+
+/* Concept: scrolling is a landing. Sections are flight phases, a fixed glide-path rail
+   tracks progress, and the page touches down on a runway at Contact.
+   Colour: light paper with deep aviation navy for the hero band, the alert-demo cockpit and
+   the runway footer; amber appears only in small highlights. */
+:root {
+  --bg: #F6F7F9;
+  --surface: #FFFFFF;
+  --ink: #0B1F3A;
+  --muted: #586579;
+  --line: #DFE3EA;
+  --accent: #F2A900;
+  --accent-ink: #0B1F3A;
+  --link: #1F4FBF;
+  --navy: #0B1F3A;
+  --navy-2: #132C50;
+  --navy-line: #24406A;
+  --navy-ink: #F3F6FB;
+  --navy-dim: #A9B6CB;
+  --panel: #0B1F3A;
+  --panel-2: #132C50;
+  --panel-line: #24406A;
+  --panel-ink: #EEF2F7;
+  --panel-dim: #A9B6CB;
+  --ok: #3FB66B;
+  --caution: #F2B01E;
+  --warn: #F0443F;
+  --rwy: #0B1F3A;
+  --rwy-line: #24406A;
+  --rwy-ink: #EEF2F7;
+  --rwy-dim: #A9B6CB;
+  --shadow: 0 1px 2px rgba(11,31,58,0.06), 0 10px 28px -14px rgba(11,31,58,0.18);
+  --display: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  --body: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0A1324; --surface: #111C30; --ink: #E9EEF5; --muted: #9AA7BA; --line: #22314A;
+    --link: #9DB6FF; --navy: #0E2340; --navy-2: #163054; --navy-line: #27406A;
+    --panel: #060C17; --panel-2: #0F1A2C; --panel-line: #22324A; --rwy: #0E2340; --rwy-line: #27406A;
+    --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 10px 28px -14px rgba(0,0,0,0.6);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0A1324; --surface: #111C30; --ink: #E9EEF5; --muted: #9AA7BA; --line: #22314A;
+    --link: #9DB6FF; --navy: #0E2340; --navy-2: #163054; --navy-line: #27406A;
+    --panel: #060C17; --panel-2: #0F1A2C; --panel-line: #22324A; --rwy: #0E2340; --rwy-line: #27406A;
+    --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 10px 28px -14px rgba(0,0,0,0.6);
+    color-scheme: dark;
+}
+
+[hidden] { display: none !important; }
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 400 1.0625rem/1.65 var(--body); -webkit-text-size-adjust: 100%; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--navy); }
+img, video { max-width: 100%; display: block; }
+h1, h2, h3, h4, h5, p, ul, ol, dl, figure { margin: 0; }
+h1, h2, h3, h4 { text-wrap: balance; }
+a { color: var(--link); text-underline-offset: 3px; }
+:focus-visible { outline: 3px solid var(--link); outline-offset: 3px; }
+
+.g { padding-inline: max(16px, env(safe-area-inset-left, 0px)) max(16px, env(safe-area-inset-right, 0px)); }
+@media (min-width: 640px) { .g { padding-inline: max(32px, env(safe-area-inset-left, 0px)) max(32px, env(safe-area-inset-right, 0px)); } }
+.in { max-width: 1120px; margin-inline: auto; min-width: 0; }
+
+.label { font: 500 0.75rem/1.3 var(--mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+.dash { height: 1px; background: var(--line); }
+
+/* nav */
+.nav { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 9; background: var(--navy); border-bottom: 1px solid var(--navy-line); color: var(--navy-ink); }
+.nav .in { display: flex; align-items: center; justify-content: space-between; gap: 8px 20px; min-height: 60px; }
+.brand { display: flex; align-items: baseline; gap: 10px; text-decoration: none; color: var(--navy-ink); flex: none; }
+.brand b { font: 700 1.125rem/1 var(--display); font-stretch: 125%; letter-spacing: -0.01em; }
+.brand span { font: 400 0.8125rem/1 var(--mono); color: var(--navy-dim); }
+.links { display: flex; gap: 2px; overflow-x: auto; scrollbar-width: none; min-width: 0; }
+.links::-webkit-scrollbar { display: none; }
+.links a { color: var(--navy-dim); text-decoration: none; font: 500 0.875rem/1 var(--body); padding: 14px 10px; white-space: nowrap; }
+.links a:hover, .links a[aria-current] { color: var(--navy-ink); }
+.links a[aria-current] { box-shadow: inset 0 -2px 0 var(--accent); }
+.navr { display: flex; align-items: center; gap: 8px; flex: none; }
+.nbtn { flex: none; font: 500 0.75rem/1 var(--mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--navy-dim); background: transparent; border: 1px solid var(--navy-line); border-radius: 999px; padding: 0 14px; min-height: 44px; cursor: pointer; }
+.nbtn:hover { color: var(--navy-ink); border-color: var(--navy-dim); }
+.nbtn:focus-visible { outline-color: var(--accent); }
+.nbtn.menu { display: none; }
+@media (max-width: 899px) { .links .opt { display: none; } }
+@media (max-width: 699px) {
+  .links, .nbtn.theme, .nbtn.kbd { display: none; }
+  .nbtn.menu { display: inline-flex; align-items: center; }
+}
+@media (max-width: 600px) { .brand span { display: none; } }
+
+/* hero */
+.hero { display: grid; gap: 36px; padding-block: clamp(36px, 7vw, 88px) clamp(32px, 5vw, 56px); align-items: center; }
+.hero-copy { display: grid; gap: 22px; min-width: 0; }
+.hero h1 { font: 800 clamp(3.4rem, 13vw, 7.5rem)/0.9 var(--display); font-stretch: 125%; letter-spacing: -0.03em; }
+.hero .lede { font-size: clamp(1.15rem, 3vw, 1.4rem); line-height: 1.5; max-width: 34ch; color: var(--ink); }
+.hero .lede mark { background: linear-gradient(transparent 62%, color-mix(in srgb, var(--accent) 55%, transparent) 62%); color: inherit; padding: 0 2px; }
+.ctas { display: flex; flex-wrap: wrap; gap: 10px; }
+.btn { display: inline-flex; align-items: center; gap: 10px; min-height: 48px; padding: 0 20px; border-radius: 999px; font: 600 0.9375rem/1 var(--body); text-decoration: none; cursor: pointer; border: 1px solid var(--ink); background: var(--ink); color: var(--bg); }
+.btn.ghost { background: transparent; color: var(--ink); border-color: var(--line); }
+.btn:hover { filter: brightness(1.1); }
+.btn.ghost:hover { border-color: var(--ink); filter: none; }
+.portrait { position: relative; width: min(100%, 360px); margin-inline: auto; }
+.portrait img { width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 6px; }
+.portrait figcaption { position: absolute; left: 12px; bottom: 12px; font: 500 0.6875rem/1 var(--mono); letter-spacing: 0.06em; text-transform: uppercase; background: var(--surface); color: var(--ink); padding: 7px 9px; border-radius: 4px; }
+@media (min-width: 900px) {
+  .hero { grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.75fr); gap: 64px; }
+  .portrait { width: 100%; }
+}
+
+/* flight strip */
+.strip { display: grid; grid-template-columns: 10px repeat(2, minmax(0, 1fr)); background: var(--surface); border: 1px solid var(--line); border-radius: 8px; overflow: hidden; margin-bottom: clamp(48px, 7vw, 80px); }
+.strip::before { content: ""; grid-row: span 2; background: var(--accent); }
+.strip > div { padding: 18px 18px 16px; display: grid; gap: 6px; align-content: start; min-width: 0; border-left: 1px solid var(--line); }
+.strip > div:nth-child(n+3) { border-top: 1px solid var(--line); }
+.strip .v { font: 800 clamp(1.45rem, 5.6vw, 2.4rem)/1 var(--display); font-stretch: 100%; letter-spacing: -0.02em; }
+.strip .s { font-size: 0.875rem; color: var(--muted); line-height: 1.4; }
+@media (min-width: 900px) {
+  .strip { grid-template-columns: 10px repeat(4, minmax(0, 1fr)); }
+  .strip::before { grid-row: auto; }
+  .strip > div:nth-child(n) { border-top: 0; }
+}
+
+/* sections */
+section { padding-block: clamp(56px, 9vw, 112px); scroll-margin-top: 64px; }
+.sh { display: grid; gap: 14px; margin-bottom: clamp(28px, 4vw, 44px); max-width: 760px; }
+.sh .label { display: flex; align-items: center; gap: 10px; }
+.sh .label::before { content: ""; width: 22px; height: 3px; background: var(--ink); }
+.sh h2 { font: 800 clamp(2rem, 6.5vw, 3.4rem)/1 var(--display); font-stretch: 118%; letter-spacing: -0.025em; }
+.sh p { color: var(--muted); font-size: 1.0625rem; max-width: 62ch; }
+.prose { display: grid; gap: 16px; max-width: 64ch; }
+.prose p:first-child { font-size: clamp(1.2rem, 3vw, 1.4rem); line-height: 1.5; }
+
+/* steps */
+.steps { list-style: none; padding: 0; display: grid; gap: 14px; margin-bottom: 28px; }
+@media (min-width: 900px) { .steps { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.steps > li { background: var(--surface); border: 1px solid var(--line); box-shadow: var(--shadow); border-radius: 8px; padding: 22px; display: grid; gap: 10px; align-content: start; min-width: 0; }
+.steps h3 { font: 700 1.25rem/1.15 var(--display); font-stretch: 110%; }
+.steps p { font-size: 0.975rem; color: var(--muted); }
+.chips { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 6px; }
+.chips li { font: 500 0.75rem/1 var(--mono); border: 1px solid var(--line); border-radius: 999px; padding: 6px 9px; color: var(--muted); background: transparent; }
+.split { display: grid; gap: 10px; margin-top: 4px; }
+.split div { display: grid; gap: 6px; }
+
+/* simulator (fixed dark cockpit panel) */
+.sim { background: var(--panel); color: var(--panel-ink); border-radius: 10px; box-shadow: 0 24px 48px -24px rgba(11,31,58,0.45); overflow: hidden; display: grid; }
+.sim-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 8px; padding: 16px 20px; border-bottom: 1px solid var(--panel-line); }
+.sim-head strong { font: 700 1.0625rem/1 var(--display); font-stretch: 112%; }
+.sim-head span { font: 500 0.75rem/1.3 var(--mono); color: var(--panel-dim); }
+.sim-body { display: grid; }
+@media (min-width: 900px) { .sim-body { grid-template-columns: 300px minmax(0, 1fr); } .ctrls { border-right: 1px solid var(--panel-line); } }
+.ctrls { display: grid; gap: 20px; padding: 20px; align-content: start; }
+.ctrl { display: grid; gap: 8px; }
+.ctrl label, .ctrl legend { font: 500 0.75rem/1.3 var(--mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--panel-dim); display: flex; justify-content: space-between; gap: 8px; padding: 0; }
+.ctrl output { color: var(--panel-ink); font-weight: 600; font-variant-numeric: tabular-nums; }
+input[type="range"] { width: 100%; accent-color: #F2B33D; min-height: 32px; margin: 0; }
+fieldset.ctrl { border: 0; margin: 0; padding: 0; min-width: 0; }
+.seg { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border: 1px solid var(--panel-line); border-radius: 6px; overflow: hidden; }
+.seg input { position: absolute; opacity: 0; pointer-events: none; }
+.seg label { justify-content: center; align-items: center; padding: 12px 4px; cursor: pointer; font: 600 0.75rem/1 var(--mono); color: var(--panel-dim); min-height: 44px; }
+.seg input + label ~ label { border-left: 1px solid var(--panel-line); }
+.seg input:checked + label { background: #F2B33D; color: #0E1A2B; }
+.seg input:focus-visible + label { outline: 3px solid #F2B33D; outline-offset: -3px; }
+.toggle { display: flex; align-items: center; gap: 12px; cursor: pointer; font: 500 0.8125rem/1.3 var(--mono); color: var(--panel-ink); min-height: 44px; }
+.toggle input { width: 20px; height: 20px; accent-color: #F2B33D; margin: 0; }
+.view { padding: 20px; display: grid; gap: 22px; min-width: 0; }
+.annun { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 14px; align-items: center; border: 1px solid var(--panel-line); background: var(--panel-2); border-radius: 6px; padding: 14px 16px; }
+.lamp { width: 20px; height: 20px; border-radius: 50%; background: var(--panel-dim); }
+.annun b { display: block; font: 800 1.375rem/1 var(--display); font-stretch: 115%; letter-spacing: 0.02em; text-transform: uppercase; }
+.annun small { display: block; font: 400 0.8125rem/1.4 var(--mono); color: var(--panel-dim); margin-top: 4px; }
+.annun[data-s="adv"] .lamp { background: var(--ok); box-shadow: 0 0 14px var(--ok); }
+.annun[data-s="adv"] b { color: var(--ok); }
+.annun[data-s="caution"] .lamp { background: var(--caution); box-shadow: 0 0 14px var(--caution); animation: blink 1.4s steps(1, end) infinite; }
+.annun[data-s="caution"] b { color: var(--caution); }
+.annun[data-s="warn"] .lamp { background: var(--warn); box-shadow: 0 0 18px var(--warn); animation: blink 0.45s steps(1, end) infinite; }
+.annun[data-s="warn"] b { color: var(--warn); }
+.annun[data-s="off"] b { color: var(--panel-dim); }
+@keyframes blink { 50% { opacity: 0.2; } }
+.track-wrap { display: grid; gap: 8px; }
+.track { position: relative; height: 64px; background: var(--panel-2); border-radius: 4px; overflow: hidden; }
+.rwy { position: absolute; left: 0; top: 13px; bottom: 13px; background: #3A4555; transition: width 0.25s ease; }
+.rwy::before { content: ""; position: absolute; left: 0; right: 0; top: 50%; height: 2px; transform: translateY(-50%); background: repeating-linear-gradient(90deg, #EEF2F7 0 16px, transparent 16px 30px); opacity: 0.8; }
+.rwy::after { content: ""; position: absolute; left: 4px; top: 4px; bottom: 4px; width: 24px; background: repeating-linear-gradient(0deg, #EEF2F7 0 3px, transparent 3px 7px); opacity: 0.8; }
+.overrun { position: absolute; top: 13px; bottom: 13px; right: 0; background: repeating-linear-gradient(135deg, rgba(240,68,63,0.5) 0 6px, transparent 6px 12px); transition: left 0.25s ease; }
+.band { position: absolute; top: 5px; bottom: 5px; border: 2px solid #F2B33D; background: rgba(242,179,61,0.18); border-radius: 3px; transition: left 0.25s ease, width 0.25s ease; }
+.endline { position: absolute; top: 0; bottom: 0; width: 3px; background: var(--warn); transition: left 0.25s ease; }
+.scale { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 4px 8px; font: 400 0.75rem/1.3 var(--mono); color: var(--panel-dim); }
+.read3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-top: 1px solid var(--panel-line); }
+.read3 div { padding: 12px 10px 0 0; min-width: 0; }
+.read3 div + div { padding-left: 12px; border-left: 1px solid var(--panel-line); }
+.read3 span { display: block; font: 500 0.6875rem/1.3 var(--mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--panel-dim); }
+.read3 b { display: block; font: 700 clamp(1.2rem, 4.2vw, 1.6rem)/1.1 var(--display); font-variant-numeric: tabular-nums; margin-top: 4px; }
+.code { margin: 0; padding: 16px 20px; background: rgba(0,0,0,0.28); color: #D9DEE4; font: 400 0.8125rem/1.75 var(--mono); overflow-x: auto; border-top: 1px solid var(--panel-line); }
+.code code { white-space: pre; font: inherit; display: block; min-width: max-content; }
+.code .ln { display: block; padding-inline: 8px; margin-inline: -8px; border-left: 3px solid transparent; transition: background 0.2s; }
+.code .ln.on { background: rgba(242,179,61,0.14); border-left-color: #F2B33D; }
+.code .tk-c { color: #8190A0; font-style: italic; }
+.code .tk-s { color: #9BD7A8; }
+.code .tk-k { color: #F2B33D; }
+.code .tk-n { color: #8FB8FF; }
+.code-cap { padding: 12px 20px 0; font: 400 0.75rem/1.4 var(--mono); color: var(--panel-dim); border-top: 1px solid var(--panel-line); }
+.code-cap + .code { border-top: 0; padding-top: 10px; }
+.presets { display: flex; flex-wrap: wrap; gap: 8px; }
+.pbtn { font: 500 0.75rem/1.2 var(--mono); color: var(--panel-ink); background: transparent; border: 1px solid var(--panel-line); border-radius: 999px; padding: 0 14px; min-height: 44px; cursor: pointer; text-align: left; }
+.pbtn:hover { border-color: var(--panel-dim); }
+.pbtn:focus-visible { outline-color: #F2B33D; }
+.chart { display: block; width: 100%; height: 160px; }
+.acft { position: absolute; top: 50%; left: 0; width: 22px; height: 22px; margin: -11px 0 0 -11px; color: var(--panel-ink); filter: drop-shadow(0 0 2px var(--panel)) drop-shadow(0 0 2px var(--panel)); pointer-events: none; }
+.acft svg { width: 100%; height: 100%; display: block; }
+.sim { scroll-margin-top: 72px; }
+.sim-note { padding: 12px 20px 16px; font: 400 0.75rem/1.5 var(--mono); color: var(--panel-dim); border-top: 1px solid var(--panel-line); }
+
+/* more projects */
+.cards { display: grid; gap: 14px; margin-top: 18px; }
+@media (min-width: 640px) { .cards { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.cards article { background: var(--surface); border: 1px solid var(--line); box-shadow: var(--shadow); border-radius: 8px; padding: 20px; display: grid; gap: 10px; align-content: start; min-width: 0; }
+.cards h3 { font: 700 1.125rem/1.2 var(--display); font-stretch: 108%; }
+.cards p { font-size: 0.9375rem; color: var(--muted); }
+.cards .wide { grid-column: 1 / -1; }
+.subhead { font: 700 1.375rem/1.1 var(--display); font-stretch: 112%; margin-top: 48px; }
+
+/* practice */
+.practice { display: grid; gap: 28px; }
+@media (min-width: 900px) { .practice { grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: 48px; align-items: start; } }
+.habits { list-style: none; padding: 0; display: grid; border-top: 1px solid var(--line); }
+.habits li { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 2px 16px; padding: 16px 0; border-bottom: 1px solid var(--line); }
+.habits h3 { font: 700 1.125rem/1.3 var(--display); font-stretch: 108%; }
+.habits .when { font: 500 0.75rem/1.6 var(--mono); color: var(--muted); text-align: right; white-space: nowrap; }
+.habits p { grid-column: 1 / -1; font-size: 0.9375rem; color: var(--muted); }
+.film { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.film figure { position: relative; overflow: hidden; border-radius: 6px; background: var(--line); min-width: 0; }
+.film video, .film img { width: 100%; height: 100%; object-fit: cover; }
+.film .tall { grid-row: span 2; }
+.film .sq { aspect-ratio: 4 / 5; }
+.film .wide { grid-column: 1 / -1; aspect-ratio: 16 / 9; }
+.film figcaption { position: absolute; left: 0; right: 0; bottom: 0; padding: 26px 12px 10px; font: 500 0.75rem/1.3 var(--mono); color: #F4F6F9; background: linear-gradient(transparent, rgba(0,0,0,0.7)); }
+.film .tag { position: absolute; top: 10px; left: 10px; font: 600 0.6875rem/1 var(--mono); letter-spacing: 0.06em; color: #F4F6F9; background: rgba(0,0,0,0.55); padding: 5px 7px; border-radius: 3px; display: flex; gap: 6px; align-items: center; }
+.film .tag i { width: 7px; height: 7px; border-radius: 50%; background: var(--warn); }
+
+/* results */
+.results { display: grid; gap: 36px; }
+@media (min-width: 900px) { .results { grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr); gap: 56px; } }
+dl.facts { display: grid; border-top: 1px solid var(--line); }
+dl.facts > div { display: grid; gap: 4px; padding: 16px 0; border-bottom: 1px solid var(--line); }
+@media (min-width: 640px) { dl.facts > div { grid-template-columns: 140px minmax(0, 1fr); gap: 20px; } }
+dl.facts dt { font: 500 0.75rem/1.9 var(--mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+dl.facts dd { margin: 0; min-width: 0; }
+dl.facts ul { padding-left: 18px; display: grid; gap: 4px; }
+.pill { display: inline-block; font: 600 0.6875rem/1 var(--mono); letter-spacing: 0.04em; text-transform: uppercase; background: var(--accent); color: var(--accent-ink); padding: 4px 7px; border-radius: 3px; margin-right: 6px; vertical-align: 2px; }
+.awards { list-style: none; padding: 0; display: grid; border-top: 1px solid var(--line); }
+.awards li { display: grid; grid-template-columns: 6.5rem minmax(0, 1fr); gap: 16px; align-items: baseline; padding: 14px 0; border-bottom: 1px solid var(--line); }
+.awards b { font: 800 1rem/1.2 var(--display); font-stretch: 112%; text-transform: uppercase; letter-spacing: 0.02em; }
+.awards span { font-size: 0.975rem; }
+.awards small { display: block; font: 400 0.75rem/1.4 var(--mono); color: var(--muted); }
+.panel-h { font: 700 1.25rem/1.2 var(--display); font-stretch: 110%; margin-bottom: 14px; }
+
+/* photos teaser */
+.teaser { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+@media (min-width: 900px) { .teaser { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+.teaser a { display: block; position: relative; overflow: hidden; border-radius: 6px; background: var(--line); }
+.teaser img { width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; transition: transform 0.5s ease; }
+.teaser a:hover img { transform: scale(1.03); }
+.teaser span { position: absolute; left: 10px; bottom: 10px; font: 600 0.6875rem/1 var(--mono); letter-spacing: 0.06em; text-transform: uppercase; background: var(--surface); color: var(--ink); padding: 6px 8px; border-radius: 3px; }
+.more { margin-top: 22px; }
+
+/* contact */
+.contact { scroll-margin-top: 64px; }
+.contact .in { display: grid; gap: 20px; }
+.contact .body { display: grid; gap: 20px; }
+.contact h2 { font: 800 clamp(2.6rem, 10vw, 5.5rem)/0.92 var(--display); font-stretch: 125%; letter-spacing: -0.03em; }
+.contact p { color: var(--muted); max-width: 50ch; }
+.mail { font: 600 clamp(1.1rem, 5vw, 1.75rem)/1.3 var(--mono); color: var(--ink); word-break: break-all; user-select: all; }
+.copied { font: 500 0.8125rem/1 var(--mono); color: var(--ok); min-height: 1em; }
+.foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; padding-top: 28px; margin-top: 40px; border-top: 1px solid var(--line); font: 400 0.75rem/1.4 var(--mono); color: var(--muted); }
+
+/* photos view */
+.ph-head { padding-block: clamp(40px, 7vw, 80px) clamp(24px, 4vw, 40px); display: grid; gap: 16px; }
+.ph-head h1 { font: 800 clamp(3rem, 12vw, 6rem)/0.92 var(--display); font-stretch: 125%; letter-spacing: -0.03em; }
+.ph-head p { color: var(--muted); max-width: 52ch; }
+.legs { display: flex; flex-wrap: wrap; gap: 8px; }
+.legs a { font: 500 0.8125rem/1 var(--body); color: var(--ink); text-decoration: none; border: 1px solid var(--line); border-radius: 999px; padding: 12px 14px; }
+.legs a:hover { border-color: var(--ink); }
+.leg { padding-block: clamp(32px, 6vw, 64px); scroll-margin-top: 64px; content-visibility: auto; contain-intrinsic-size: 1px 900px; }
+.leg-h { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 6px 20px; margin-bottom: 18px; }
+.leg-h h2 { font: 800 clamp(1.6rem, 5vw, 2.4rem)/1 var(--display); font-stretch: 115%; letter-spacing: -0.02em; }
+.leg-h span { font: 500 0.8125rem/1.3 var(--mono); color: var(--muted); }
+.grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; grid-auto-flow: dense; }
+@media (min-width: 900px) { .grid { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+.shot { display: grid; gap: 8px; align-content: start; min-width: 0; }
+.shot button { all: unset; display: block; cursor: zoom-in; overflow: hidden; border-radius: 6px; background: var(--line); }
+.shot button:focus-visible { outline: 3px solid var(--link); outline-offset: 3px; }
+.shot img { width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; transition: transform 0.5s ease; }
+.shot button:hover img { transform: scale(1.03); }
+.shot.w { grid-column: span 2; }
+.shot.w img { aspect-ratio: 8.4 / 5; }
+.shot figcaption { font-size: 0.875rem; color: var(--muted); line-height: 1.4; }
+.shot figcaption b { color: var(--ink); font-weight: 600; }
+.lb { position: fixed; inset: 0; z-index: 20; background: rgba(6,10,16,0.94); display: grid; place-items: center; touch-action: pan-y; padding: max(64px, env(safe-area-inset-top, 0px)) max(16px, env(safe-area-inset-right, 0px)) calc(76px + env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px)); }
+.lb figure { display: grid; gap: 10px; max-width: min(1200px, 100%); }
+.lb img { max-height: calc(100vh - 64px - 76px - 60px); width: auto; margin-inline: auto; border-radius: 4px; }
+.lb figcaption { font: 500 0.8125rem/1.4 var(--mono); color: #C9CFD5; text-align: center; }
+.lb figcaption #lbCount { color: #F2B33D; font-variant-numeric: tabular-nums; }
+.lb .x { position: absolute; top: calc(env(safe-area-inset-top, 0px) + 12px); right: calc(env(safe-area-inset-right, 0px) + 12px); font: 600 0.875rem/1 var(--body); background: #F4F6F9; color: #0E1A2B; border: 0; border-radius: 999px; padding: 0 18px; min-height: 44px; cursor: pointer; }
+.lb .nav-b { position: absolute; bottom: calc(env(safe-area-inset-bottom, 0px) + 16px); width: 44px; height: 44px; border-radius: 50%; border: 0; background: #F4F6F9; color: #0E1A2B; font: 700 1.25rem/1 var(--body); cursor: pointer; }
+.lb .prev { right: calc(env(safe-area-inset-right, 0px) + 72px); }
+.lb .next { right: calc(env(safe-area-inset-right, 0px) + 16px); }
+.lb :focus-visible { outline-color: #F2B33D; }
+@media (min-width: 700px) {
+  .lb { padding-bottom: max(24px, env(safe-area-inset-bottom, 0px)); }
+  .lb img { max-height: 80vh; }
+  .lb .nav-b { bottom: auto; top: 50%; margin-top: -22px; }
+  .lb .prev { right: auto; left: calc(env(safe-area-inset-left, 0px) + 16px); }
+  .lb .next { right: calc(env(safe-area-inset-right, 0px) + 16px); }
+}
+
+/* blur-up: a tiny inline placeholder shows until the real image has loaded */
+.blur-ready .shot button img, .blur-ready .teaser a img, .blur-ready .film figure img { opacity: 0; transition: opacity 0.35s, transform 0.5s ease; }
+.blur-ready .shot button img.is-loaded, .blur-ready .teaser a img.is-loaded, .blur-ready .film figure img.is-loaded { opacity: 1; }
+
+/* under the hood */
+.steps.hood { grid-template-columns: minmax(0, 1fr); margin-bottom: 28px; }
+.hood .code { border: 1px solid var(--panel-line); border-radius: 6px; background: var(--panel); font-size: 0.8125rem; line-height: 1.7; max-height: 420px; min-width: 0; }
+@media (max-width: 600px) { .hood .code, .sim .code { font-size: 0.75rem; } }
+@media (min-width: 900px) {
+  .steps.hood > li { grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); grid-auto-rows: max-content; gap: 10px 28px; align-items: start; }
+  .steps.hood > li > .label, .steps.hood > li > h3, .steps.hood > li > p, .steps.hood > li > .demo { grid-column: 1; }
+  .steps.hood > li > .code { grid-column: 2; grid-row: 1 / span 4; align-self: start; }
+  .steps.hood > li > .demo { margin-top: 8px; }
+}
+.demo { display: grid; gap: 8px; align-content: start; margin-top: 4px; }
+.demo input[type="text"] { font: 500 0.875rem/1 var(--mono); color: var(--ink); background: var(--bg); border: 1px solid var(--line); border-radius: 6px; padding: 0 12px; min-height: 44px; width: 100%; }
+.demo output { font: 600 0.8125rem/1.4 var(--mono); font-variant-numeric: tabular-nums; }
+.hood-list { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 6px; }
+.hood-list li { font: 500 0.75rem/1 var(--mono); border: 1px solid var(--line); border-radius: 999px; padding: 7px 10px; transition: opacity 0.2s; }
+.hood-list li.dim { opacity: 0.3; }
+mark { background: color-mix(in srgb, var(--accent) 55%, transparent); color: inherit; border-radius: 2px; }
+.stats { font: 500 0.8125rem/1.6 var(--mono); color: var(--ink); margin-top: 8px; }
+.colophon { font-size: 0.875rem; color: var(--muted); max-width: 62ch; margin-top: 10px; }
+.linkbtn { all: unset; cursor: pointer; font: 600 0.9375rem/1 var(--body); color: var(--link); text-decoration: underline; text-underline-offset: 3px; display: inline-block; margin-top: 14px; padding-block: 14px; }
+.linkbtn:focus-visible { outline: 3px solid var(--link); outline-offset: 3px; }
+
+/* command palette */
+.pal, .drawer { position: fixed; inset: 0; z-index: 30; background: rgba(11,31,58,0.45); }
+.pal-box { position: absolute; top: 12vh; left: 50%; transform: translateX(-50%); width: min(560px, calc(100% - 32px)); max-height: 70vh; display: flex; flex-direction: column; background: var(--surface); color: var(--ink); border: 1px solid var(--line); border-radius: 12px; box-shadow: var(--shadow); overflow: hidden; }
+.pal-top { display: flex; gap: 8px; align-items: center; padding: 10px; border-bottom: 1px solid var(--line); }
+.pal-top input { flex: 1; min-width: 0; min-height: 44px; font: 500 1rem/1 var(--body); color: var(--ink); background: transparent; border: 0; padding: 0 8px; }
+.pal-top input:focus-visible { outline: 3px solid var(--link); outline-offset: -3px; border-radius: 6px; }
+.pal-x { flex: none; min-height: 44px; padding: 0 14px; font: 500 0.75rem/1 var(--mono); text-transform: uppercase; color: var(--muted); background: transparent; border: 1px solid var(--line); border-radius: 999px; cursor: pointer; }
+.pal-list { list-style: none; margin: 0; padding: 6px; overflow-y: auto; flex: 1; }
+.pal-list li { display: flex; justify-content: space-between; align-items: center; gap: 12px; min-height: 44px; padding: 8px 12px; border-radius: 8px; cursor: pointer; font: 500 0.9375rem/1.3 var(--body); }
+.pal-list li small { flex: none; font: 400 0.6875rem/1.3 var(--mono); letter-spacing: 0.04em; text-transform: uppercase; color: var(--muted); }
+.pal-list li[aria-selected="true"] { background: var(--ink); color: var(--bg); }
+.pal-list li[aria-selected="true"] small { color: var(--bg); opacity: 0.75; }
+.pal-list li[aria-selected="true"] mark { background: var(--accent); color: var(--accent-ink); }
+.pal-list .none { cursor: default; color: var(--muted); }
+.pal-foot { display: flex; justify-content: space-between; gap: 12px; padding: 10px 14px calc(10px + env(safe-area-inset-bottom, 0px)); border-top: 1px solid var(--line); font: 400 0.6875rem/1.4 var(--mono); color: var(--muted); }
+#palMsg { color: var(--ok); }
+@media (max-width: 699px) {
+  .pal-box { top: auto; left: 0; right: 0; bottom: 0; transform: none; width: auto; max-height: 70vh; border-radius: 16px 16px 0 0; border-bottom: 0; }
+}
+
+/* source drawer */
+.drawer-box { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: min(900px, calc(100% - 32px)); max-height: 85vh; display: flex; flex-direction: column; background: var(--panel); color: var(--panel-ink); border: 1px solid var(--panel-line); border-radius: 12px; box-shadow: var(--shadow); overflow: hidden; }
+.drawer-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 10px 10px 10px 20px; border-bottom: 1px solid var(--panel-line); }
+.drawer-head h2 { font: 600 0.875rem/1.3 var(--mono); }
+.drawer-head button { flex: none; min-height: 44px; padding: 0 18px; font: 600 0.875rem/1 var(--body); background: #F4F6F9; color: #0E1A2B; border: 0; border-radius: 999px; cursor: pointer; }
+.drawer-head button:focus-visible, .drawer .code:focus-visible { outline-color: #F2B33D; }
+.drawer .code { flex: 1; overflow: auto; border-top: 0; }
+@media (max-width: 699px) {
+  .drawer-box { inset: 0; transform: none; width: auto; max-height: none; border-radius: 0; border: 0; padding: env(safe-area-inset-top, 0px) max(0px, env(safe-area-inset-right, 0px)) env(safe-area-inset-bottom, 0px) max(0px, env(safe-area-inset-left, 0px)); }
+}
+
+
+/* sky hero + contrail + window portrait */
+.sky { position: relative; overflow: hidden; background: radial-gradient(900px 500px at 85% 10%, var(--navy-2), transparent 70%), var(--navy); color: var(--navy-ink); }
+.sky .label { color: var(--navy-dim); }
+.sky .phase { color: var(--accent); }
+.sky .hero h1 { color: #FFFFFF; }
+.sky .hero .lede { color: var(--navy-ink); }
+.sky .hero .lede mark { background: linear-gradient(transparent 64%, rgba(242,169,0,0.55) 64%); }
+.sky .btn { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+.sky .btn.ghost { background: transparent; color: var(--navy-ink); border-color: var(--navy-line); }
+.sky .btn.ghost:hover { border-color: var(--navy-ink); }
+.sky .strip { background: rgba(255,255,255,0.05); border-color: var(--navy-line); }
+.sky .strip > div { border-color: var(--navy-line); }
+.sky .strip .s { color: var(--navy-dim); }
+.sky .strip .v { color: #FFFFFF; }
+.contrail { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+.contrail path { fill: none; stroke: #FFFFFF; stroke-width: 2; stroke-linecap: round; opacity: 0.16; }
+.contrail path + path { stroke-width: 1; opacity: 0.1; }
+.sky .in { position: relative; z-index: 1; }
+.window { position: relative; width: min(100%, 340px); margin-inline: auto; padding: 14px; background: #E9EDF3; border-radius: 44% / 34%; box-shadow: 0 30px 60px -28px rgba(0,0,0,0.6); }
+.window img { width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 42% / 32%; box-shadow: inset 0 0 0 1px rgba(0,0,0,0.06); }
+.window::after { content: ""; position: absolute; left: 50%; top: 5px; width: 36px; height: 4px; margin-left: -18px; border-radius: 2px; background: #C2CAD6; }
+@media (min-width: 900px) { .window { width: 100%; max-width: 360px; justify-self: end; } }
+.phase { color: var(--ink); font-weight: 600; }
+.contact .phase { color: var(--accent) !important; }
+
+/* glide-path rail (desktop) */
+.rail { position: fixed; z-index: 8; right: max(18px, env(safe-area-inset-right, 0px)); top: 50%; transform: translateY(-50%); width: 56px; height: min(68vh, 560px); display: none; }
+.rail .alt { position: absolute; top: -34px; right: 0; font: 600 0.75rem/1 var(--mono); color: var(--ink); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.rail .slope { position: absolute; top: 0; bottom: 18px; left: 50%; width: 0; border-left: 2px dashed var(--line); }
+.rail .tick { position: absolute; left: calc(50% - 6px); width: 12px; height: 2px; background: var(--muted); opacity: 0.6; }
+.rail .tick.on { background: var(--accent); opacity: 1; }
+.rail .strip-rwy { position: absolute; bottom: 0; left: 50%; width: 22px; margin-left: -11px; height: 14px; background: repeating-linear-gradient(90deg, var(--ink) 0 3px, transparent 3px 6px); border-radius: 2px; opacity: 0.85; }
+.rail .plane { position: absolute; left: 50%; top: 0; width: 26px; height: 26px; margin-left: -13px; color: var(--ink); filter: drop-shadow(0 0 2px var(--bg)) drop-shadow(0 0 2px var(--bg)); transition: transform 0.12s linear; }
+.rail .plane svg { width: 100%; height: 100%; transform: rotate(90deg); display: block; }
+.rail.end .plane { color: var(--rwy-ink); filter: drop-shadow(0 0 2px var(--rwy)) drop-shadow(0 0 2px var(--rwy)); }
+.rail.end .alt { color: var(--rwy-ink); }
+.rail.end .strip-rwy { background: repeating-linear-gradient(90deg, var(--rwy-ink) 0 3px, transparent 3px 6px); }
+.rail .chip { position: absolute; right: calc(100% + 2px); top: 50%; transform: translateY(-50%); font: 600 0.6875rem/1.25 var(--mono); letter-spacing: 0.06em; text-transform: uppercase; white-space: normal; max-width: 96px; text-align: right; background: var(--accent); color: var(--accent-ink); padding: 5px 7px; border-radius: 3px; }
+@media (min-width: 1100px) {
+  .rail { display: block; }
+  #home .g, .contact.g, .nav.g { padding-right: max(104px, env(safe-area-inset-right, 0px)); }
+}
+
+/* approach bar (phones and tablets) */
+.abar { position: fixed; z-index: 8; left: 0; right: 0; bottom: 0; background: var(--surface); border-top: 1px solid var(--line); padding: 8px max(16px, env(safe-area-inset-right, 0px)) calc(8px + env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px)); display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 12px; align-items: center; }
+.abar .ph { font: 600 0.6875rem/1 var(--mono); letter-spacing: 0.06em; text-transform: uppercase; background: var(--accent); color: var(--accent-ink); padding: 5px 7px; border-radius: 3px; white-space: nowrap; }
+.abar .al { font: 600 0.75rem/1 var(--mono); color: var(--ink); font-variant-numeric: tabular-nums; white-space: nowrap; min-width: 6.5em; text-align: right; }
+.abar .tr { position: relative; height: 22px; min-width: 0; }
+.abar .tr::before { content: ""; position: absolute; left: 0; right: 26px; top: 50%; border-top: 2px dashed var(--line); }
+.abar .tr::after { content: ""; position: absolute; right: 0; top: 4px; width: 22px; height: 14px; background: repeating-linear-gradient(90deg, var(--ink) 0 3px, transparent 3px 6px); border-radius: 2px; opacity: 0.85; }
+.abar .pl { position: absolute; top: 0; left: 0; width: 22px; height: 22px; color: var(--ink); }
+.abar .pl svg { width: 100%; height: 100%; display: block; }
+@media (min-width: 1100px) { .abar { display: none; } }
+@media (max-width: 1099px) { body.has-bar { padding-bottom: calc(52px + env(safe-area-inset-bottom, 0px)); } }
+
+/* runway (contact) */
+.contact { background: var(--rwy); color: var(--rwy-ink); padding-block: 0 32px; }
+.contact .keys { margin-top: 0; height: clamp(34px, 5vw, 52px); background: repeating-linear-gradient(90deg, var(--rwy-ink) 0 18px, transparent 18px 34px); opacity: 0.9; margin-bottom: 18px; }
+.contact .cl { height: 4px; background: repeating-linear-gradient(90deg, var(--rwy-ink) 0 56px, transparent 56px 100px); opacity: 0.7; margin-bottom: clamp(40px, 7vw, 72px); }
+.contact .label { color: var(--rwy-dim); }
+.contact p { color: var(--rwy-dim); }
+.contact .mail { color: #FFFFFF; }
+.contact h2 { color: #FFFFFF; }
+.contact .btn { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+.contact .btn.ghost { background: transparent; color: var(--rwy-ink); border-color: var(--rwy-line); }
+.contact .btn.ghost:hover { border-color: var(--rwy-ink); }
+.contact .foot { border-top-color: var(--rwy-line); color: var(--rwy-dim); }
+.contact .foot a { color: var(--rwy-ink); }
+.contact .tdz { display: flex; gap: 10px; margin-top: 8px; }
+.contact .tdz i { width: 46px; height: 10px; background: var(--rwy-ink); opacity: 0.55; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .annun .lamp { animation: none !important; }
+  .rail .plane { transition: none; }
+  .rwy, .overrun, .band, .endline, .code .ln, .teaser img, .shot img, .hood-list li { transition: none; }
+  .blur-ready .shot button img, .blur-ready .teaser a img, .blur-ready .film figure img { transition: none; }
+  ::view-transition-group(*), ::view-transition-old(*), ::view-transition-new(*) { animation: none !important; }
+}
+</style>
+</head>
+<body>
+<header class="nav g">
+  <div class="in">
+    <a class="brand" href="#top"><b>Steven Chen</b><span>陈熙晋</span></a>
+    <nav class="links" aria-label="Site">
+      <a href="#work">Work</a>
+      <a class="opt" href="#practice">Practice</a>
+      <a class="opt" href="#results">Results</a>
+      <a class="opt" href="#under-the-hood">Under the hood</a>
+      <a href="#photos" id="navPhotos">Photos</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="navr">
+      <button class="nbtn kbd" id="palBtn" type="button" aria-label="Open command palette" aria-haspopup="dialog">Ctrl K</button>
+      <button class="nbtn theme" id="themeBtn" type="button" aria-label="Switch between light and dark theme">Theme</button>
+      <button class="nbtn menu" id="menuBtn" type="button" aria-haspopup="dialog">Menu</button>
+    </div>
+  </div>
+</header>
+
+<!-- ===================== HOME ===================== -->
+<div id="home">
+<main>
+  <div class="g sky" id="top" data-phase="Cruise">
+    <svg class="contrail" viewBox="0 0 1200 600" preserveAspectRatio="none" aria-hidden="true"><path d="M-40 520 C 260 460, 640 300, 1240 70"/><path d="M-40 540 C 260 480, 640 320, 1240 90"/></svg>
+    <div class="in hero">
+      <div class="hero-copy">
+        <span class="label"><span class="phase">Cruise</span> · Mathematics · Physics · Cambridge A Level</span>
+        <h1>Steven Chen</h1>
+        <p class="lede">I turn real-world risk into <mark>clear, testable decision rules</mark>, and I practise something every day.</p>
+        <div class="ctas">
+          <a class="btn" href="#work">See the runway project <span aria-hidden="true">→</span></a>
+          <a class="btn ghost" href="#contact">Get in touch</a>
+        </div>
+      </div>
+      <figure class="window">
+        <img src="img/hero.webp" width="880" height="1100" alt="Steven Chen in a navy jacket on a lawn, trees behind him" fetchpriority="high">
+      </figure>
+    </div>
+    <div class="in strip" role="group" aria-label="Key results">
+      <div><span class="label">Predicted A Level</span><span class="v">A* × 4</span><span class="s">Maths, Further Maths, Physics, Chemistry</span></div>
+      <div><span class="label">IGCSE</span><span class="v">A* × 3</span><span class="s">Maths, Physics, Chemistry</span></div>
+      <div><span class="label">Senior Maths Challenge</span><span class="v">Gold</span><span class="s">Plus Physics Bowl Silver, BPhO Bronze</span></div>
+      <div><span class="label">Basketball</span><span class="v">Champions</span><span class="s">2024 school tournament</span></div>
+    </div>
+  </div>
+
+  <section id="about" class="g" data-phase="Top of descent" aria-labelledby="about-h">
+    <div class="in">
+      <div class="sh"><span class="label"><span class="phase">Top of descent</span> · About</span><h2 id="about-h">From physics to decision rules</h2></div>
+      <div class="prose">
+        <p>I'm a student at Guanghua Cambridge International School, studying Mathematics, Further Mathematics, Physics and Chemistry.</p>
+        <p>Outside class I build and compete: a research project on runway-overrun alerting for aircraft, a team rescue-robot concept, a robotics challenge and a racing-car STEM project through HKU, and maths and physics competitions. Since Grade 9 I've volunteered weekly at Ocean Heaven (海洋天堂) in Hangzhou. I also keep a training habit: basketball almost every day, gym sessions, and puzzles I've been solving since Grade 6.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="g"><div class="in dash" aria-hidden="true"></div></div>
+
+  <section id="work" class="g" data-phase="Descent" aria-labelledby="work-h">
+    <div class="in">
+      <div class="sh">
+        <span class="label"><span class="phase">Descent</span> · Featured work</span>
+        <h2 id="work-h">Runway Overrun Awareness and Alerting System</h2>
+        <p>A research project with civil-aviation partners on a system that warns pilots when a landing may run past the end of the runway. My part was the alert design: when the cockpit warns, how loudly, and when it stays quiet.</p>
+      </div>
+
+      <ol class="steps">
+        <li>
+          <span class="label">01 · Bound</span>
+          <h3>Find the stopping range</h3>
+          <p>From overrun accident records and landing-performance data, I split the inputs into those fixed before touchdown and those the pilot can still change. Best and worst combinations of the adjustable ones give a shortest and longest stop.</p>
+          <div class="split">
+            <div><span class="label">Fixed before touchdown</span><ul class="chips"><li>Weight</li><li>Elevation</li><li>Wind</li><li>Slope</li><li>Temperature</li><li>Approach speed</li><li>Surface</li></ul></div>
+            <div><span class="label">Pilot adjusts</span><ul class="chips"><li>Brakes</li><li>Reverse thrust</li><li>Anti-ice</li></ul></div>
+          </div>
+        </li>
+        <li>
+          <span class="label">02 · Decide</span>
+          <h3>Write the alert rules</h3>
+          <p>With the runway-risk margin as input, I wrote the alert behaviour as conditional rules across the three alert levels used in aviation standards, each with its own light and sound. A go-around switches alerts off to avoid false alarms.</p>
+        </li>
+        <li>
+          <span class="label">03 · Test</span>
+          <h3>Run it in a simulator</h3>
+          <p>I ran the rules through typical landing cases in a full-flight simulator (different speeds, wet runways, short runway left), checked when each level fired and how accurately, and helped write up what needed changing.</p>
+        </li>
+      </ol>
+
+      <div class="sim" aria-label="Interactive illustration of the alert rules">
+        <div class="sim-head"><strong>Try the alert rules</strong><span>Simplified illustration</span></div>
+        <div class="sim-body">
+          <form class="ctrls" id="simForm" onsubmit="return false">
+            <div class="presets" role="group" aria-label="Example landings">
+              <button class="pbtn" type="button" data-preset="dry-long">Dry · long runway</button>
+              <button class="pbtn" type="button" data-preset="wet">Wet · 1,600 m</button>
+              <button class="pbtn" type="button" data-preset="contaminated-short">Contaminated · short</button>
+            </div>
+            <div class="ctrl">
+              <label for="spd">Touchdown ground speed <output id="spdOut" for="spd">140 kt</output></label>
+              <input type="range" id="spd" min="110" max="170" step="5" value="140">
+            </div>
+            <div class="ctrl">
+              <label for="rem">Runway left after touchdown <output id="remOut" for="rem">2,200 m</output></label>
+              <input type="range" id="rem" min="1000" max="3200" step="100" value="2200">
+            </div>
+            <fieldset class="ctrl">
+              <legend>Runway surface</legend>
+              <div class="seg">
+                <input type="radio" name="surf" id="sDry" value="dry" checked><label for="sDry">Dry</label>
+                <input type="radio" name="surf" id="sWet" value="wet"><label for="sWet">Wet</label>
+                <input type="radio" name="surf" id="sCon" value="contaminated"><label for="sCon">Contam.</label>
+              </div>
+            </fieldset>
+            <label class="toggle" for="ga"><input type="checkbox" id="ga"> Pilot starts a go-around</label>
+          </form>
+          <div class="view">
+            <div class="annun" id="annun" data-s="adv" role="status" aria-live="polite">
+              <i class="lamp" aria-hidden="true"></i>
+              <div><b id="annunT">Advisory</b><small id="annunS">Steady light, soft tone. Plenty of runway left.</small></div>
+            </div>
+            <div class="track-wrap">
+              <div class="track" aria-hidden="true"><div class="rwy" id="rwy"></div><span class="acft" id="acft" aria-hidden="true"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M23 12 20 10.8H14.5L10.5 3H8.5L10.8 10.8H5L3.2 7.8H2L2.8 12 2 16.2H3.2L5 13.2H10.8L8.5 21H10.5L14.5 13.2H20Z"/></svg></span><div class="overrun" id="ovr"></div><div class="band" id="band"></div><div class="endline" id="endl"></div></div>
+              <div class="scale" aria-hidden="true"><span>Touchdown →</span><span>Yellow: stopping range · Red: runway end</span></div>
+              <canvas class="chart" id="chart" aria-hidden="true"></canvas>
+            </div>
+            <div class="read3">
+              <div><span>Shortest stop</span><b id="rS">–</b></div>
+              <div><span>Longest stop</span><b id="rL">–</b></div>
+              <div><span>Margin</span><b id="rM">–</b></div>
+            </div>
+          </div>
+        </div>
+        <p class="code-cap">This is the page's own running code, read at load time.</p>
+        <pre class="code" tabindex="0" aria-label="The page's own alert-rule code"><code id="simCode"></code></pre>
+        <p class="sim-note">The rule structure follows Steven's design. The physics is deliberately simple (stopping distance = v² ÷ 2 × braking deceleration, with example braking values per surface and a 300 m caution band). These numbers are for illustration only. They are not the project's model, thresholds or data. The code shown above runs for every change you make.</p>
+      </div>
+
+      <h3 class="subhead">More projects</h3>
+      <div class="cards">
+        <article class="wide">
+          <span class="label">Team project · team of three</span>
+          <h3>Pioneer rescue robot</h3>
+          <p>A team pitch for a robot that surveys and clears key roads in the first 72 hours after a typhoon: a transformable tracked-wheel chassis, mapping and camera-based detection, and a service-based business model linked to UN Sustainable Development Goals 3, 9 and 11. A concept and presentation, not a built robot.</p>
+        </article>
+        <article><span class="label">HKU summer programme</span><h3>STEM racing car project</h3></article>
+        <article><span class="label">HKU × Intel</span><h3>Robotics challenge</h3></article>
+        <article><span class="label">School club</span><h3>Engineering projects (创课社)</h3></article>
+      </div>
+    </div>
+  </section>
+
+  <div class="g"><div class="in dash" aria-hidden="true"></div></div>
+
+  <section id="practice" class="g" data-phase="Approach" aria-labelledby="practice-h">
+    <div class="in">
+      <div class="sh">
+        <span class="label"><span class="phase">Approach</span> · Practice</span>
+        <h2 id="practice-h">Showing up, on film</h2>
+        <p>Pilots log hours because consistency is what makes skill stick. These are the things I keep coming back to, and I film a lot of it.</p>
+      </div>
+      <div class="practice">
+        <ul class="habits">
+          <li><h3>Volunteering</h3><span class="when">Weekly since Grade 9</span><p>At Ocean Heaven (海洋天堂) in Hangzhou. My dad works in Hangzhou, so my mum and I travel from Shanghai every week to see him, and I volunteer at Ocean Heaven on the same trip. I started before I joined Guanghua Cambridge and have kept it up since.</p></li>
+          <li><h3>Basketball</h3><span class="when">Almost daily</span><p>I film my sessions and edit my own shooting clips. My team won the 2024 school tournament.</p></li>
+          <li><h3>Gym</h3><span class="when">Ongoing</span><p>Strength sessions I film to check my form: pull-ups, rows, squats.</p></li>
+          <li><h3>Puzzles</h3><span class="when">Since Grade 6</span><p>A collection of twisty puzzles, from the 3×3 up to the 5×5. I've filmed a full 5×5 solve.</p></li>
+          <li><h3>Tennis</h3><span class="when">About 6 years</span><p>Self-taught, alongside the school tennis club.</p></li>
+          <li><h3>Volleyball</h3><span class="when">School team</span><p>Represented the school at Shanghai international-school tournaments.</p></li>
+        </ul>
+        <div class="film">
+          <figure class="tall"><video src="media/training.mp4" poster="img/training.jpg" muted loop playsinline autoplay preload="metadata" aria-label="Clips of Steven training in a gym: pull-ups, cable rows and pulldowns"></video><span class="tag"><i aria-hidden="true"></i>REC</span><figcaption>Gym sessions</figcaption></figure>
+          <figure class="sq"><video src="media/cube.mp4" poster="img/cube.jpg" muted loop playsinline autoplay preload="metadata" aria-label="Steven solving a 5 by 5 Rubik's cube, sped up eight times"></video><span class="tag">8× SPEED</span><figcaption>Full 5×5 solve</figcaption></figure>
+          <figure class="sq" style="background-image:url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAAgABgDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDCkkCXszxOGDxthh06c0y2SS8m2qAxHzMScAAVeg+xJHsldSePvcZ/H+lWJZILC3WaAJg5DqBg+g/GlKor6IajZWMrUJHFxJiMqqHYoznge9FTi28+KaaVtokwVUdu9FWtSfhJksrJwSUw+BtjLk8HuferV1ZmW4leSNWibb8itjbgYJqj4biJuJpMgCNM/U1s3N1EsMhTqo6Y6f41lNtvQtW3ZTvLRW09YEcxwpk4XncOOp9Biiq8OpRCQQTL3IDZ4Oeqn2oqoyS+JMdr7H//2Q==);background-size:cover"><img src="img/medals.webp" width="720" height="960" loading="lazy" alt="Teammates holding champion medals around a gold basketball trophy" decoding="async"><figcaption>2024 basketball champions</figcaption></figure>
+          <figure class="wide" style="background-image:url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAAOABgDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDNkspY0AjZSwUDPQdeaelvC1oXkO2cOFyGJA9q0JbZgjCUg8dQeRVdNPUjBcsDyD0I4qE7q7NlGK3MlD5czCRuR2HJ60Vqanp8P2VWQYkQhdx7j3xRRdENPof/2Q==);background-size:cover"><img src="img/grade6.webp" width="1200" height="714" loading="lazy" alt="Steven in Grade 6 at a table lined with twisty puzzles of different sizes" decoding="async"><figcaption>Grade 6, with the puzzle collection</figcaption></figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="g"><div class="in dash" aria-hidden="true"></div></div>
+
+  <section id="results" class="g" data-phase="Final approach" aria-labelledby="results-h">
+    <div class="in">
+      <div class="sh"><span class="label"><span class="phase">Final approach</span> · Results</span><h2 id="results-h">Education and competitions</h2></div>
+      <div class="results">
+        <div>
+          <h3 class="panel-h">Education</h3>
+          <dl class="facts">
+            <div><dt>School</dt><dd>Guanghua Cambridge International School, Cambridge AS/A Level pathway (3.5-year programme, enrolled 2024)</dd></div>
+            <div><dt>A Level</dt><dd><ul>
+              <li><span class="pill">Predicted</span>A* in Mathematics, Further Mathematics, Physics and Chemistry</li>
+              <li>Mathematics Pure 1 and Statistics 1: scored 90</li>
+            </ul></dd></div>
+            <div><dt>IGCSE</dt><dd>A* in Mathematics, Physics and Chemistry; A in Economics and Accounting</dd></div>
+            <div><dt>English</dt><dd>IELTS 7.0 overall (Listening 7.5, Reading 8, Speaking 6, Writing 6)</dd></div>
+          </dl>
+        </div>
+        <div>
+          <h3 class="panel-h">Competitions</h3>
+          <ul class="awards">
+            <li><b>Gold</b><span>Senior Mathematical Challenge</span></li>
+            <li><b>Silver</b><span>Physics Bowl</span></li>
+            <li><b>Bronze</b><span>British Physics Olympiad</span></li>
+            <li><b>Top 5%</b><span>AMC 10</span></li>
+            <li><b>Top 25%</b><span>AMC 12</span></li>
+            <li><b>Champions</b><span>School basketball tournament<small>2024, with my team</small></span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="g"><div class="in dash" aria-hidden="true"></div></div>
+
+  <section id="under-the-hood" class="g" data-phase="Landing checklist" aria-labelledby="hood-h">
+    <div class="in">
+      <div class="sh">
+        <span class="label"><span class="phase">Landing checklist</span> · Under the hood</span>
+        <h2 id="hood-h">How this page works</h2>
+        <p>This site is one hand-written HTML file: no framework, no build step, no tracking. The snippets below are read from the page's own running code when it loads, so what you see is what runs.</p>
+      </div>
+      <ol class="steps hood">
+        <li>
+          <span class="label">01 · Decide</span>
+          <h3>Alert rules</h3>
+          <p>Three alert levels and a go-around cut-off, in a dozen lines.</p>
+          <pre class="code" tabindex="0" aria-label="Source of the alertLevel function"><code data-fn="alertLevel"></code></pre>
+          <div class="demo"><button class="btn ghost" id="hoodTry" type="button">Try it in the simulator <span aria-hidden="true">↑</span></button></div>
+        </li>
+        <li>
+          <span class="label">02 · Fly</span>
+          <h3>Scroll becomes altitude</h3>
+          <p>Page progress is mapped to a descent from 35,000 ft; the glide-path rail reads from this function.</p>
+          <pre class="code" tabindex="0" aria-label="Source of the altitudeFor function"><code data-fn="altitudeFor"></code></pre>
+          <div class="demo">
+            <label class="label" for="hoodP">Scroll progress</label>
+            <input type="range" id="hoodP" min="0" max="100" step="1" value="17">
+            <output id="hoodOut" for="hoodP"></output>
+          </div>
+        </li>
+        <li>
+          <span class="label">03 · Find</span>
+          <h3>Fuzzy search</h3>
+          <p>The command palette matches typed letters in order and scores runs of adjacent letters higher.</p>
+          <pre class="code" tabindex="0" aria-label="Source of the fuzzy function"><code data-fn="fuzzy"></code></pre>
+          <div class="demo">
+            <input type="text" id="hoodQ" placeholder="Try: rnwy" aria-label="Type letters to test the fuzzy matcher" autocomplete="off" spellcheck="false">
+            <ul class="hood-list" id="hoodList" aria-label="Section names"></ul>
+          </div>
+        </li>
+      </ol>
+      <p class="stats" id="stats"></p>
+      <p class="colophon">The alert rules follow Steven's ROAAS design; the demo physics is simplified for illustration. Page designed and built with Claude, 2026.</p>
+      <button class="linkbtn" id="readSrc" type="button">Read the whole script →</button>
+    </div>
+  </section>
+
+  <div class="g"><div class="in dash" aria-hidden="true"></div></div>
+
+  <section id="photo-teaser" class="g" data-phase="Short final" aria-labelledby="pt-h">
+    <div class="in">
+      <div class="sh"><span class="label"><span class="phase">Short final</span> · Photos</span><h2 id="pt-h">Campuses, trails and teams</h2><p>University visits in London, York and Hong Kong, a multi-day trek, and the teams I play with.</p></div>
+      <div class="teaser">
+        <a href="#photos" style="background-image:url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAAeABgDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDB+13UZK+cGUHgOKmTU7hSHeElT/dPH61LCRCk5aCGRy+AzjOOmP51FdTAwbhGIWVyDs4Bx7UhFmPVoWODuQ5/iWigQ24SJ3WRmYZJLgd8elFAgnZjbvLDAsce7JbncfX8Kl06AXFrvnQOCxK7hkY9qu6ika6fINpI+UYz7iqemzSeY0UWFhjdjjHUEnFPoUXmgDKF8tcDgfLRT2mkPfH0oqQP/9k=);background-size:cover"><img src="img/imperial.webp" width="720" height="900" loading="lazy" alt="Steven outside Imperial College London" decoding="async"><span>London</span></a>
+        <a href="#photos" style="background-image:url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAAeABgDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwCKPWmkEaSoBzlmB4q9ebHaOLIy6/KM9f8AOawrRo4Z4pJIlkUH7p5FX5pD9ptXJGA4De3zED+QpxquxPJcZEiy2crFfmRxg+xAop955lxYLPAF3Mxyi9+ccUVUK1kKULshk8x0RLiGNSgClkPX8KhjnMwLMu1hwoXtzWhPH5hDK7oy9Cp/mO9Q28RhQqwUktngcVyJ3RZWe4kEaIrYEfK+gOepoq2Qp/hX8qKLhqf/2Q==);background-size:cover"><img src="img/york.webp" width="720" height="900" loading="lazy" alt="Steven by the York sign with York Minster behind" decoding="async"><span>York</span></a>
+        <a href="#photos" style="background-image:url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAAeABgDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDR1W5uo/JS3byw2SzgAkY7DNWbOSSS1jaUhnI5IGM++Ky3nXUbdZi7og+YKAM4q806xKFTAVQAAOwp9RaWLm7FFZ73RHU4opiMbQplksljZugwRV6SCaS6xFLEVYcJu5JrOsbRLdHjb5pI5GVmHGT7flT7+RreQSQsVYgEEHmp6jLN1b34LbYGIz1Ug0VVt9evl4Z1kAGfmWimI//Z);background-size:cover"><img src="img/peak.webp" width="720" height="900" loading="lazy" alt="Steven at a railing above the Hong Kong skyline" decoding="async"><span>Hong Kong</span></a>
+        <a href="#photos" style="background-image:url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAAeABgDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDWaYRIZJG2IOpPFU7DWBJcSRStGozhOOp9Ky35OCzHAPUk9KgiAaZlKsBkgZHB5pc4+U6wyOeOaK5Zwu0e9FHtPIXIaQtYyPnUAeik/wA6yNaJtbiFbceWGUkkZ5Oa2mbFZ2ssrGAsucMcex4/wpR0Y2WZreRoY9lsjEgHPQjjpiiru4nJ96Kko//Z);background-size:cover"><img src="img/blenheim.webp" width="720" height="900" loading="lazy" alt="Steven in front of the Blenheim Palace gate tower" decoding="async"><span>Oxfordshire</span></a>
+      </div>
+      <div class="more"><a class="btn ghost" href="#photos">See all photos <span aria-hidden="true">→</span></a></div>
+    </div>
+  </section>
+</main>
+</div>
+
+<!-- ===================== PHOTOS ===================== -->
+<div id="photosView" hidden>
+<main class="g">
+  <div class="in ph-head">
+    <span class="label">Photos</span>
+    <h1>Flight log</h1>
+    <p>Campus visits, a trek, the teams I play with, and a puzzle habit that started in Grade 6. Tap any photo to see it larger.</p>
+    <nav class="legs" aria-label="Photo sections">
+      <a href="#photos" data-leg="leg-uk">United Kingdom</a>
+      <a href="#photos" data-leg="leg-hk">Hong Kong</a>
+      <a href="#photos" data-leg="leg-trail">On the trail</a>
+      <a href="#photos" data-leg="leg-teams">Teams</a>
+      <a href="#photos" data-leg="leg-g6">Since Grade 6</a>
+    </nav>
+  </div>
+  <div class="in dash" aria-hidden="true"></div>
+
+  <section class="in leg" id="leg-uk" aria-labelledby="uk-h">
+    <div class="leg-h"><h2 id="uk-h">United Kingdom</h2><span>London · York · Oxfordshire</span></div>
+    <div class="grid">
+      <figure class="shot"><button type="button" style="background-image:url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAAeABgDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDB+13UZK+cGUHgOKmTU7hSHeElT/dPH61LCRCk5aCGRy+AzjOOmP51FdTAwbhGIWVyDs4Bx7UhFmPVoWODuQ5/iWigQ24SJ3WRmYZJLgd8elFAgnZjbvLDAsce7JbncfX8Kl06AXFrvnQOCxK7hkY9qu6ika6fINpI+UYz7iqemzSeY0UWFhjdjjHUEnFPoUXmgDKF8tcDgfLRT2mkPfH0oqQP/9k=);background-size:cover"><img src="img/imperial.webp" width="720" height="900" loading="lazy" alt="Steven standing outside the main entrance of Imperial College London" decoding="async"></button><figcaption><b>Imperial College London</b></figcaption></figure>
+      <figure class="shot"><button type="button" style="background-image:url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAAeABgDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwCKPWmkEaSoBzlmB4q9ebHaOLIy6/KM9f8AOawrRo4Z4pJIlkUH7p5FX5pD9ptXJGA4De3zED+QpxquxPJcZEiy2crFfmRxg+xAop955lxYLPAF3Mxyi9+ccUVUK1kKULshk8x0RLiGNSgClkPX8KhjnMwLMu1hwoXtzWhPH5hDK7oy9Cp/mO9Q28RhQqwUktngcVyJ3RZWe4kEaIrYEfK+gOepoq2Qp/hX8qKLhqf/2Q==);background-size:cover"><img src="img/york.webp" width="720" height="900" loading="lazy" alt="Steven by large green YORK letters with York Minster behind" decoding="async"></button><figcaption><b>York</b> · York Minster</figcaption></figure>
+      <figure class="shot"><button type="button" style="background-image:url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAAeABgDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDWaYRIZJG2IOpPFU7DWBJcSRStGozhOOp9Ky35OCzHAPUk9KgiAaZlKsBkgZHB5pc4+U6wyOeOaK5Zwu0e9FHtPIXIaQtYyPnUAeik/wA6yNaJtbiFbceWGUkkZ5Oa2mbFZ2ssrGAsucMcex4/wpR0Y2WZreRoY9lsjEgHPQjjpiiru4nJ96Kko//Z);background-size:cover"><img src="img/blenheim.webp" width="720" height="900" loading="lazy" alt="Steven on a gravel drive in front of the Blenheim Palace gate tower" decoding="async"></button><figcaption><b>Blenheim Palace</b></figcaption></figure>
+      <figure class="shot"><button type="button" style="background-image:url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAAeABgDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwCuVDxhpkieQ9CnBxUEtrGWUqcZPAfr+YrWuZraaIqIXaTcDzEBgA8jI9qqX0+np8ywmJdjrjYVO49CPpQIoyQsg5BxnAwRj9KKt2Uls+mQosTmWOQb3ZSNwzn+RoqbjIZ5XMAdWDA/eZuCPpWRLJLOB5jllU8A1bESkAtljjIyc1Bhcjg9Tn86q/YaXcW1uJIi0cZGzO4Bhz+OKKU2iFFYAZIFFFwsf//Z);background-size:cover"><img src="img/belfast.webp" width="720" height="900" loading="lazy" alt="Steven seated in the captain's chair on the bridge of HMS Belfast, looking out at London" decoding="async"></button><figcaption><b>HMS Belfast</b> · on the bridge</figcaption></figure>
+      <figure class="shot"><button type="button" style="background-image:url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAAeABgDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwB14N1yIkAxGqjB71HLGQ3mR79pwD16jioNSunjllEbFI8/Mw6k/WqKXMkXlu4lSOTOx89cHBqCjdm3f2eSww4IPHrntRUUoaGHY7Y3Dj69aKaAra1j7NGABln5OOtZk8SxRnLOTjjjgVpXMKvJsXO0OcEnJ4UVR1gERxAE59SfaqRLNu6cz2sLHsmP0oq1bw+ZYwqx6IP5UVIz/9k=);background-size:cover"><img src="img/door.webp" width="720" height="900" loading="lazy" alt="Steven with a hand on an old wooden door under a carved stone arch" decoding="async"></button><figcaption><b>College gateway</b> · England</figcaption></figure>
+    </div>
+  </section>
+
+  <section class="in leg" id="leg-hk" aria-labelledby="hk-h">
+    <div class="leg-h"><h2 id="hk-h">Hong Kong</h2><span>HKU · Victoria Peak</span></div>
+    <div class="grid">
+      <figure class="shot w"><button type="button" style="background-image:url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAAOABgDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwBd8bjDRHH0FQeVCCcQtGT3RiD+lZv2iQlcEjf/ALVSC7e0zIw3gHlc96xs0dDki7FNsuArSGRT2kbGPxopbfRprw+b5kaqTnnJOPSiqTsZSXM7n//Z);background-size:cover"><img src="img/hku.webp" width="1200" height="714" loading="lazy" alt="Steven in a yellow hoodie in front of The University of Hong Kong sign and flower beds" decoding="async"></button><figcaption><b>The University of Hong Kong</b></figcaption></figure>
+      <figure class="shot"><button type="button" style="background-image:url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAAeABgDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDR1W5uo/JS3byw2SzgAkY7DNWbOSSS1jaUhnI5IGM++Ky3nXUbdZi7og+YKAM4q806xKFTAVQAAOwp9RaWLm7FFZ73RHU4opiMbQplksljZugwRV6SCaS6xFLEVYcJu5JrOsbRLdHjb5pI5GVmHGT7flT7+RreQSQsVYgEEHmp6jLN1b34LbYGIz1Ug0VVt9evl4Z1kAGfmWimI//Z);background-size:cover"><img src="img/peak.webp" width="720" height="900" loading="lazy" alt="Steven at a glass railing with the Hong Kong skyline in mist behind him" decoding="async"></button><figcaption><b>Victoria Peak</b></figcaption></figure>
+      <figure class="shot"><button type="button" style="background-image:url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAAQABgDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwCK7lhe6RlYujqpBBPSo7hP3so8twEwGO/GD7CnwXtldXAQJtKkCN9vf6Vmajcz22oSoW+XIO3sw6g0tRWV7s3NQSLzFEvmMqKWISism11d5p2+0Yy42ll449P1NFGwNXP/2Q==);background-size:cover"><img src="img/train.webp" width="1100" height="733" loading="lazy" alt="Steven seated on a train, looking at the camera" decoding="async"></button><figcaption><b>On the move</b></figcaption></figure>
+    </div>
+  </section>
+
+  <section class="in leg" id="leg-trail" aria-labelledby="tr-h">
+    <div class="leg-h"><h2 id="tr-h">On the trail</h2><span>Multi-day trek · map and compass</span></div>
+    <div class="grid">
+      <figure class="shot w"><button type="button" style="background-image:url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAAOABgDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwC9c61ErNCId2cDcvZT3x61Qe6ltIYUWESI/wAsbHBbrnH6VBdhmsfPUIjM2AVHO3B4/MVauijQiLy1G3kEcY5pCjqguZrqS3kuPtnlkZISPgf5OaKrxSyLGYzsZAMkFeTj3opMZ//Z);background-size:cover"><img src="img/trek.webp" width="1200" height="714" loading="lazy" alt="Steven holding a map and explaining the route to four teammates in rain gear" decoding="async"></button><figcaption><b>Reading the route</b> with my team</figcaption></figure>
+      <figure class="shot w"><button type="button" style="background-image:url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAAQABgDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwCWzsordFErhyx+bDdB2qrqESRyxNI4hQ8Hvg+lNeLCAIxXJ+bnqPT88flSyvKYokQ/dbLE45z1qrXWqM7FyxitpY8EBsDggkZoqisO8wAlsJCEPzdxRQ7raImf/9k=);background-size:cover"><img src="img/trek2.webp" width="1100" height="733" loading="lazy" alt="Six trekkers in rain gear giving thumbs up on a wet road, with backpacks and maps" decoding="async"></button><figcaption><b>Day on the trail</b>, rain gear on</figcaption></figure>
+    </div>
+  </section>
+
+  <section class="in leg" id="leg-teams" aria-labelledby="tm-h">
+    <div class="leg-h"><h2 id="tm-h">Teams</h2><span>Volleyball · basketball</span></div>
+    <div class="grid">
+      <figure class="shot w"><button type="button" style="background-image:url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAAOABgDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwCSC0gBjmjtraNs/KSpzkUp0+33ho4LQkHOQDn1yKnhkZ1OwD3zUu2TaSxTqegrFV42NnQlcwtTht4Wy1tA7uN5K5zz3xRWncYYYZEz/eA5+lFRLEJPRFRw7e7P/9k=);background-size:cover"><img src="img/volley.webp" width="1200" height="714" loading="lazy" alt="The school volleyball team in white jerseys posing with volleyballs in a gym" decoding="async"></button><figcaption><b>School volleyball team</b></figcaption></figure>
+      <figure class="shot"><button type="button" style="background-image:url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAAgABgDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDCkkCXszxOGDxthh06c0y2SS8m2qAxHzMScAAVeg+xJHsldSePvcZ/H+lWJZILC3WaAJg5DqBg+g/GlKor6IajZWMrUJHFxJiMqqHYoznge9FTi28+KaaVtokwVUdu9FWtSfhJksrJwSUw+BtjLk8HuferV1ZmW4leSNWibb8itjbgYJqj4biJuJpMgCNM/U1s3N1EsMhTqo6Y6f41lNtvQtW3ZTvLRW09YEcxwpk4XncOOp9Biiq8OpRCQQTL3IDZ4Oeqn2oqoyS+JMdr7H//2Q==);background-size:cover"><img src="img/medals.webp" width="720" height="960" loading="lazy" alt="Teammates holding champion medals around a gold basketball trophy" decoding="async"></button><figcaption><b>Basketball champions</b> · 2024</figcaption></figure>
+    </div>
+  </section>
+
+  <section class="in leg" id="leg-g6" aria-labelledby="g6-h">
+    <div class="leg-h"><h2 id="g6-h">Since Grade 6</h2><span>The habit started early</span></div>
+    <div class="grid">
+      <figure class="shot w"><button type="button" style="background-image:url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAAOABgDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDNkspY0AjZSwUDPQdeaelvC1oXkO2cOFyGJA9q0JbZgjCUg8dQeRVdNPUjBcsDyD0I4qE7q7NlGK3MlD5czCRuR2HJ60Vqanp8P2VWQYkQhdx7j3xRRdENPof/2Q==);background-size:cover"><img src="img/grade6.webp" width="1200" height="714" loading="lazy" alt="Steven in Grade 6 at a table lined with twisty puzzles of different sizes" decoding="async"></button><figcaption><b>Grade 6</b> · my puzzle collection</figcaption></figure>
+      <figure class="shot"><button type="button" style="background-image:url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD//gAQTGF2YzYwLjMxLjEwMgD/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAAeABgDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDaFhbN922j9uKpagrwSAMM5XAAHBrXjwmEBztFOID/AHgCKzbuUnYy4Jr2UK7RhkHUDqKK0wflYAdPSinzCKMJdNxWUyOR1b0/CnwSOgLSMzAjncScH24pXs1iTELMgHbORVNrhkyASWHdjms9irosyXsg8sRwFjnLruHA570VXiXzHDFiGYBeKKeoWR//2Q==);background-size:cover"><img src="img/cube.jpg" width="432" height="540" loading="lazy" alt="Steven solving a 5 by 5 cube" decoding="async"></button><figcaption><b>Years later</b> · solving the 5×5</figcaption></figure>
+    </div>
+  </section>
+</main>
+</div>
+
+<footer class="contact g" id="contact" data-phase="Touchdown" aria-labelledby="contact-h">
+  <div class="in">
+    <div class="keys" aria-hidden="true"></div>
+    <div class="cl" aria-hidden="true"></div>
+    <span class="label"><span class="phase">Touchdown</span> · Contact</span>
+    <h2 id="contact-h">Landed. Let's talk.</h2>
+    <p>If you'd like to talk about the runway project, competitions or anything else here, email me.</p>
+    <p class="mail" id="mailText">stevenxjchen@outlook.com</p>
+    <div class="ctas">
+      <button class="btn" id="copyBtn" type="button">Copy email address</button>
+      <a class="btn ghost" href="mailto:stevenxjchen@outlook.com">Open in mail app</a>
+    </div>
+    <span class="copied" id="copied" role="status" aria-live="polite"></span>
+    <div class="tdz" aria-hidden="true"><i></i><i></i><i></i></div>
+    <div class="foot"><span>© 2026 Steven Chen</span><a href="#top">Back to top ↑</a></div>
+  </div>
+</footer>
+
+<div class="rail" id="rail" aria-hidden="true">
+  <span class="alt" id="railAlt">35,000 ft</span>
+  <span class="slope"></span><span class="strip-rwy"></span>
+  <span class="plane" id="railPlane"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M23 12 20 10.8H14.5L10.5 3H8.5L10.8 10.8H5L3.2 7.8H2L2.8 12 2 16.2H3.2L5 13.2H10.8L8.5 21H10.5L14.5 13.2H20Z"/></svg><span class="chip" id="railPh">Cruise</span></span>
+</div>
+<div class="abar" id="abar" aria-hidden="true">
+  <span class="ph" id="barPh">Cruise</span>
+  <span class="tr"><span class="pl" id="barPlane"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M23 12 20 10.8H14.5L10.5 3H8.5L10.8 10.8H5L3.2 7.8H2L2.8 12 2 16.2H3.2L5 13.2H10.8L8.5 21H10.5L14.5 13.2H20Z"/></svg></span></span>
+  <span class="al" id="barAlt">35,000 ft</span>
+</div>
+
+<div class="lb" id="lb" hidden role="dialog" aria-modal="true" aria-label="Photo viewer">
+  <button class="x" id="lbClose" type="button">Close</button>
+  <figure><img id="lbImg" alt="" decoding="async"><figcaption id="lbCap"><span id="lbCount"></span> · <span id="lbText"></span></figcaption></figure>
+  <button class="nav-b prev" id="lbPrev" type="button" aria-label="Previous photo"><span aria-hidden="true">←</span></button>
+  <button class="nav-b next" id="lbNext" type="button" aria-label="Next photo"><span aria-hidden="true">→</span></button>
+</div>
+
+<div class="pal" id="palette" hidden role="dialog" aria-modal="true" aria-label="Command palette">
+  <div class="pal-box">
+    <div class="pal-top">
+      <input id="palIn" type="text" role="combobox" aria-controls="palList" aria-expanded="true" aria-autocomplete="list" aria-label="Type a command or section" placeholder="Jump to a section, change theme, copy email…" autocomplete="off" spellcheck="false">
+      <button class="pal-x" id="palClose" type="button" aria-label="Close command palette">Esc</button>
+    </div>
+    <ul class="pal-list" id="palList" role="listbox" aria-label="Commands"></ul>
+    <div class="pal-foot"><span>↑↓ navigate · ↵ select · esc close</span><span id="palMsg" role="status" aria-live="polite"></span></div>
+  </div>
+</div>
+
+<div class="drawer" id="source" hidden role="dialog" aria-modal="true" aria-label="Page source code">
+  <div class="drawer-box">
+    <div class="drawer-head"><h2 id="srcTitle">This page's JavaScript</h2><button id="srcClose" type="button">Close</button></div>
+    <pre class="code" tabindex="0" aria-label="The full script of this page"><code id="srcCode"></code></pre>
+  </div>
+</div>
+
+<script>
+(function () {
+  'use strict';
+
+  /* ------------------------------------------------------------------
+     Pure functions. Each is shown on the page, read back with toString().
+     ------------------------------------------------------------------ */
+
+  /** Stopping range after touchdown. Illustrative physics: s = v² / (2a). */
+  function stoppingRange({ speedKt, surface }) {
+    // Deceleration in m/s² as [max braking, light braking]; illustrative values.
+    const DECEL = { dry: [3.0, 1.8], wet: [2.2, 1.3], contaminated: [1.5, 1.0] };
+    const v = speedKt * 0.5144; // knots to metres per second
+    const [aMax, aMin] = DECEL[surface];
+    return { shortest: v * v / (2 * aMax), longest: v * v / (2 * aMin) };
+  }
+
+  /** Alert level from the runway margin. The structure follows Steven's ROAAS design. */
+  function alertLevel({ runwayLeft, longest, goingAround }) {
+    const CAUTION_BAND = 300; // metres, illustrative
+    const margin = runwayLeft - longest;
+    // A go-around suppresses every alert: no false alarms.
+    if (goingAround) return { level: 'off', margin };
+    // The predicted stop is beyond the runway end.
+    if (margin < 0) return { level: 'warn', margin };
+    // The margin is shrinking.
+    if (margin < CAUTION_BAND) return { level: 'caution', margin };
+    // Plenty of runway left.
+    return { level: 'adv', margin };
+  }
+
+  /** Scroll progress (0 to 1) to altitude in feet, a descent from 35,000 ft. */
+  function altitudeFor(progress) {
+    if (progress > 0.995) return 0; // on the ground
+    const feet = 35000 * Math.pow(1 - progress, 1.3);
+    return Math.round(feet / 100) * 100;
+  }
+
+  /** Case-insensitive subsequence match. Returns matched indices, or null. */
+  function fuzzy(query, text) {
+    const q = query.toLowerCase();
+    const t = text.toLowerCase();
+    const hits = [];
+    let from = 0;
+    for (const ch of q) {
+      const at = t.indexOf(ch, from);
+      if (at < 0) return null;
+      hits.push(at);
+      from = at + 1;
+    }
+    return hits;
+  }
+
+  /* ------------------------------------------------------------------
+     Setup
+     ------------------------------------------------------------------ */
+
+  const root = document.documentElement;
+  const $ = (id) => document.getElementById(id);
+  const scriptEl = document.currentScript || document.querySelector('script:not([src])');
+  const htmlKB = Math.round(new Blob([root.outerHTML]).size / 1024); // measured before the page adds its own markup
+  const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const reduced = () => motionQuery.matches;
+  const EMAIL = $('mailText').textContent.trim();
+  root.classList.add('blur-ready');
+
+  const fmtM = (m) => Math.round(m).toLocaleString('en-US') + ' m';
+  const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+
+  /* ------------------------------------------------------------------
+     Syntax highlighting: one regex, four token kinds
+     ------------------------------------------------------------------ */
+
+  // Groups: 1 comment, 2 string, 3 keyword, 4 number.
+  // \x27 is a single quote, \x22 a double quote, \x60 a backtick.
+  const TOKEN = new RegExp([
+    '(\\/\\/[^\\n]*|\\/\\*[\\s\\S]*?\\*\\/)',
+    '(\\x27(?:\\\\.|[^\\x27\\\\\\n])*\\x27|\\x22(?:\\\\.|[^\\x22\\\\\\n])*\\x22|\\x60(?:\\\\.|[^\\x60\\\\])*\\x60)',
+    '\\b(function|return|const|let|var|if|else|for|of|in|new|true|false|null|typeof)\\b',
+    '\\b(\\d+(?:\\.\\d+)?)\\b'
+  ].join('|'), 'g');
+  const KINDS = ['', 'c', 's', 'k', 'n'];
+
+  // Wrap a token in a span. A token that spans lines gets one span per line.
+  function tokenSpan(kind, text) {
+    return esc(text).split('\n').map((part) => '<span class="tk-' + kind + '">' + part + '</span>').join('\n');
+  }
+
+  function hl(src) {
+    let out = '';
+    let last = 0;
+    let m;
+    TOKEN.lastIndex = 0;
+    while ((m = TOKEN.exec(src))) {
+      out += esc(src.slice(last, m.index));
+      out += tokenSpan(KINDS[m.slice(1).findIndex(Boolean) + 1], m[0]);
+      last = TOKEN.lastIndex;
+    }
+    return out + esc(src.slice(last));
+  }
+
+  // Highlight a block and wrap every line. Lines with `level: 'x'` get data-b="x".
+  function renderCode(src) {
+    const raw = src.split('\n');
+    return hl(src).split('\n').map((html, i) => {
+      const branch = /level: \x27(\w+)\x27/.exec(raw[i]);
+      return '<span class="ln"' + (branch ? ' data-b="' + branch[1] + '"' : '') + '>' + (html || ' ') + '</span>';
+    }).join('');
+  }
+
+  // Remove the common indent of lines 2 and after (the first line has none).
+  function dedent(src) {
+    const lines = src.split('\n');
+    let indent = Infinity;
+    lines.slice(1).forEach((line) => {
+      if (line.trim()) indent = Math.min(indent, line.match(/^ */)[0].length);
+    });
+    if (!isFinite(indent)) indent = 0;
+    return lines.map((line, i) => (i ? line.slice(indent) : line)).join('\n');
+  }
+
+  /* ------------------------------------------------------------------
+     Dialogs: focus goes in on open and returns to the opener on close
+     ------------------------------------------------------------------ */
+
+  const openers = new Map();
+
+  function openDialog(dlg, firstFocus) {
+    openers.set(dlg, document.activeElement);
+    dlg.hidden = false;
+    if (firstFocus) firstFocus.focus({ preventScroll: true });
+  }
+
+  function closeDialog(dlg) {
+    if (dlg.hidden) return;
+    dlg.hidden = true;
+    const opener = openers.get(dlg);
+    if (opener && opener.isConnected && opener.focus) opener.focus({ preventScroll: true });
+  }
+
+  // Keep Tab inside a dialog.
+  function trapTab(e, dlg) {
+    if (e.key !== 'Tab') return;
+    const items = [].slice.call(dlg.querySelectorAll('button, input, [tabindex="0"]')).filter((el) => !el.disabled && el.getClientRects().length > 0);
+    if (!items.length) return;
+    const first = items[0];
+    const lastItem = items[items.length - 1];
+    if (e.shiftKey && document.activeElement === first) { e.preventDefault(); lastItem.focus(); }
+    else if (!e.shiftKey && document.activeElement === lastItem) { e.preventDefault(); first.focus(); }
+  }
+
+  /* ------------------------------------------------------------------
+     Theme
+     ------------------------------------------------------------------ */
+
+  try {
+    const saved = localStorage.getItem('sc-theme');
+    if (saved === 'light' || saved === 'dark') root.setAttribute('data-theme', saved);
+  } catch (e) { /* storage unavailable: fine */ }
+
+  function toggleTheme() {
+    const cur = root.getAttribute('data-theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    const next = cur === 'dark' ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    try { localStorage.setItem('sc-theme', next); } catch (e) { /* ignore */ }
+    scheduleChart();
+  }
+  $('themeBtn').addEventListener('click', toggleTheme);
+
+  /* ------------------------------------------------------------------
+     Routing: home and #photos are two views in one file
+     ------------------------------------------------------------------ */
+
+  const home = $('home');
+  const photos = $('photosView');
+  const navPhotos = $('navPhotos');
+
+  function applyView(onPhotos, target) {
+    home.hidden = onPhotos;
+    photos.hidden = !onPhotos;
+    if (rail) showTracker(!onPhotos);
+    if (onPhotos) {
+      navPhotos.setAttribute('aria-current', 'page');
+      window.scrollTo({ top: 0, behavior: 'instant' });
+    } else {
+      navPhotos.removeAttribute('aria-current');
+      placeTicks();
+      scheduleChart();
+      if (target) target.scrollIntoView();
+    }
+    requestFly();
+  }
+
+  function route() {
+    const h = location.hash.slice(1);
+    const onPhotos = h === 'photos';
+    const target = !onPhotos && h ? document.getElementById(h) : null;
+    const changing = onPhotos !== home.hidden;
+    if (changing && document.startViewTransition && !reduced()) {
+      const vt = document.startViewTransition(() => applyView(onPhotos, target));
+      vt.ready.catch(() => {}); // a skipped transition is not an error
+      vt.finished.catch(() => {});
+      return vt.updateCallbackDone.catch(() => {});
+    }
+    applyView(onPhotos, target);
+    return Promise.resolve();
+  }
+
+  // Go to a section id (or "photos") without waiting for a hashchange event.
+  function navigate(id) {
+    if (location.hash.slice(1) !== id) history.pushState(null, '', '#' + id);
+    return route();
+  }
+
+  window.addEventListener('hashchange', route);
+  document.querySelectorAll('[data-leg]').forEach((a) => {
+    a.addEventListener('click', (e) => {
+      e.preventDefault();
+      const el = $(a.getAttribute('data-leg'));
+      if (el) el.scrollIntoView();
+    });
+  });
+
+  /* nav: mark the section in view (home only) */
+  const navLinks = [].slice.call(document.querySelectorAll('.links a[href^="#"]')).filter((a) => a !== navPhotos);
+  const visible = new Set();
+  function markNav() {
+    const sections = navLinks.map((a) => document.getElementById(a.getAttribute('href').slice(1)));
+    const current = sections.filter((s) => s && visible.has(s)).pop();
+    navLinks.forEach((a, i) => {
+      if (sections[i] === current && current) a.setAttribute('aria-current', 'true');
+      else a.removeAttribute('aria-current');
+    });
+  }
+  const navWatcher = new IntersectionObserver((entries) => {
+    entries.forEach((en) => { if (en.isIntersecting) visible.add(en.target); else visible.delete(en.target); });
+    markNav();
+  }, { rootMargin: '-40% 0px -55% 0px' });
+  navLinks.forEach((a) => { const s = document.getElementById(a.getAttribute('href').slice(1)); if (s) navWatcher.observe(s); });
+
+  /* ------------------------------------------------------------------
+     Flight tracker: scroll progress to altitude, phase and plane position
+     ------------------------------------------------------------------ */
+
+  const rail = $('rail');
+  const abar = $('abar');
+  const railPlane = $('railPlane');
+  const barPlane = $('barPlane');
+  const phaseEls = [].slice.call(document.querySelectorAll('#home [data-phase], #contact[data-phase]'));
+  let ticks = [];
+  let phaseMarks = []; // [{ name, p }]: scroll progress at which each phase starts
+
+  function placeTicks() {
+    ticks.forEach((t) => t.remove());
+    ticks = [];
+    phaseMarks = [];
+    const max = root.scrollHeight - innerHeight;
+    const h = rail.clientHeight - 18 - 26;
+    phaseEls.forEach((sec) => {
+      const p = Math.min(1, Math.max(0, (sec.offsetTop - innerHeight * 0.4) / Math.max(1, max)));
+      const name = sec.getAttribute('data-phase');
+      const t = document.createElement('span');
+      t.className = 'tick';
+      t.style.top = (13 + p * h) + 'px';
+      t.setAttribute('data-ph', name);
+      rail.appendChild(t);
+      ticks.push(t);
+      phaseMarks.push({ name, p });
+    });
+    updateHoodAltitude(); // the demo reads phaseMarks
+  }
+
+  let flyQueued = false;
+  function fly() {
+    flyQueued = false;
+    if (home.hidden) return;
+    const max = Math.max(1, root.scrollHeight - innerHeight);
+    const p = Math.min(1, Math.max(0, scrollY / max));
+    const alt = altitudeFor(p);
+    let cur = phaseEls[0];
+    phaseEls.forEach((sec) => { if (sec.getBoundingClientRect().top < innerHeight * 0.45) cur = sec; });
+    const name = p > 0.995 ? 'Touchdown' : cur.getAttribute('data-phase');
+    const altText = alt.toLocaleString('en-US') + ' ft';
+    $('railAlt').textContent = altText;
+    $('barAlt').textContent = altText;
+    $('railPh').textContent = name;
+    $('barPh').textContent = name;
+    const h = rail.clientHeight - 18 - 26;
+    railPlane.style.transform = 'translateY(' + (p * h) + 'px)';
+    barPlane.style.transform = 'translateX(' + (p * (barPlane.parentNode.clientWidth - 22)) + 'px)';
+    rail.classList.toggle('end', name === 'Touchdown'); // keep the plane visible over the navy footer
+    ticks.forEach((t) => t.classList.toggle('on', t.getAttribute('data-ph') === name));
+  }
+  function requestFly() {
+    if (!flyQueued) { flyQueued = true; requestAnimationFrame(fly); }
+  }
+  function showTracker(on) {
+    rail.hidden = !on;
+    abar.hidden = !on;
+    document.body.classList.toggle('has-bar', on);
+  }
+  window.addEventListener('scroll', requestFly, { passive: true });
+  window.addEventListener('resize', () => { placeTicks(); requestFly(); });
+  window.addEventListener('load', () => { placeTicks(); requestFly(); });
+
+  /* ------------------------------------------------------------------
+     Photos: blur-up, lightbox with prev/next, swipe and counter
+     ------------------------------------------------------------------ */
+
+  document.querySelectorAll('.shot img, .teaser img, .film figure img').forEach((img) => {
+    const done = () => img.classList.add('is-loaded');
+    if (img.complete && img.naturalWidth) done();
+    else { img.addEventListener('load', done); img.addEventListener('error', done); }
+  });
+
+  const lb = $('lb');
+  const lbImg = $('lbImg');
+  const shots = [].slice.call(document.querySelectorAll('.shot button'));
+  let lbIndex = 0;
+
+  function showShot(i) {
+    lbIndex = (i + shots.length) % shots.length;
+    const b = shots[lbIndex];
+    const img = b.querySelector('img');
+    const cap = b.parentNode.querySelector('figcaption');
+    lbImg.src = img.currentSrc || img.src;
+    lbImg.alt = img.alt;
+    $('lbCount').textContent = (lbIndex + 1) + ' / ' + shots.length;
+    $('lbText').textContent = cap ? cap.textContent : '';
+    [lbIndex - 1, lbIndex + 1].forEach((n) => { // preload the neighbours
+      const near = shots[(n + shots.length) % shots.length].querySelector('img');
+      new Image().src = near.currentSrc || near.src;
+    });
+  }
+
+  shots.forEach((b, i) => {
+    b.addEventListener('click', () => { showShot(i); openDialog(lb, $('lbClose')); });
+  });
+  $('lbClose').addEventListener('click', () => closeDialog(lb));
+  $('lbPrev').addEventListener('click', () => showShot(lbIndex - 1));
+  $('lbNext').addEventListener('click', () => showShot(lbIndex + 1));
+  lb.addEventListener('click', (e) => { if (e.target === lb) closeDialog(lb); });
+
+  // Swipe: a mostly horizontal drag of at least 40px
+  let swipe = null;
+  lb.addEventListener('pointerdown', (e) => { swipe = { x: e.clientX, y: e.clientY }; });
+  lb.addEventListener('pointerup', (e) => {
+    if (!swipe) return;
+    const dx = e.clientX - swipe.x;
+    const dy = e.clientY - swipe.y;
+    swipe = null;
+    if (Math.abs(dx) >= 40 && Math.abs(dx) > Math.abs(dy)) showShot(lbIndex + (dx < 0 ? 1 : -1));
+  });
+  lb.addEventListener('pointercancel', () => { swipe = null; });
+
+  if (reduced()) {
+    document.querySelectorAll('.film video').forEach((v) => { v.removeAttribute('autoplay'); v.pause(); v.controls = true; });
+  }
+
+  /* ------------------------------------------------------------------
+     Simulator
+     ------------------------------------------------------------------ */
+
+  const spd = $('spd');
+  const rem = $('rem');
+  const ga = $('ga');
+  const TXT = {
+    off: ['Alerts off', 'Go-around in progress. Alerts are suppressed.'],
+    warn: ['Warning', 'Fast red flashing, continuous loud tone. Predicted stop is past the runway end.'],
+    caution: ['Caution', 'Blinking light, intermittent tone. The margin is getting small.'],
+    adv: ['Advisory', 'Steady light, soft tone. Plenty of runway left.']
+  };
+  const PRESETS = {
+    'dry-long': { speed: 140, runway: 2800, surface: 'dry' },
+    'wet': { speed: 145, runway: 1600, surface: 'wet' },
+    'contaminated-short': { speed: 150, runway: 1300, surface: 'contaminated' }
+  };
+
+  // Show the page's own functions, read back from the running code
+  $('simCode').innerHTML = renderCode(dedent(stoppingRange.toString()) + '\n\n' + dedent(alertLevel.toString()));
+
+  let simState = null; // last inputs and results, for the chart
+
+  function update() {
+    const surface = document.querySelector('input[name="surf"]:checked').value;
+    const speedKt = +spd.value;
+    const runwayLeft = +rem.value;
+    const { shortest, longest } = stoppingRange({ speedKt, surface });
+    const { level, margin } = alertLevel({ runwayLeft, longest, goingAround: ga.checked });
+    const scale = Math.max(runwayLeft, longest) * 1.12;
+    const pct = (x) => (x / scale * 100).toFixed(2) + '%';
+
+    $('spdOut').textContent = speedKt + ' kt';
+    $('remOut').textContent = runwayLeft.toLocaleString('en-US') + ' m';
+    $('rwy').style.width = pct(runwayLeft);
+    $('ovr').style.left = pct(runwayLeft);
+    $('endl').style.left = 'calc(' + pct(runwayLeft) + ' - 1px)';
+    $('band').style.left = pct(shortest);
+    $('band').style.width = pct(longest - shortest);
+    $('rS').textContent = fmtM(shortest);
+    $('rL').textContent = fmtM(longest);
+    $('rM').textContent = (margin < 0 ? '−' : '+') + fmtM(Math.abs(margin));
+    $('annun').setAttribute('data-s', level);
+    $('annunT').textContent = TXT[level][0];
+    $('annunS').textContent = TXT[level][1];
+    document.querySelectorAll('.sim .code .ln[data-b]').forEach((l) => {
+      l.classList.toggle('on', l.getAttribute('data-b') === level);
+    });
+
+    moveAircraft(longest / scale);
+    simState = { speedKt, runwayLeft, shortest, longest, scale };
+    scheduleChart();
+  }
+
+  // Aircraft marker: glides to the longest-stop point (about 350 ms, ease-out)
+  const acft = $('acft');
+  let acftPos = null;
+  let acftRaf = 0;
+
+  function placeAircraft(frac) {
+    acftPos = frac;
+    acft.style.left = (frac * 100).toFixed(2) + '%';
+  }
+
+  function moveAircraft(target) {
+    cancelAnimationFrame(acftRaf);
+    if (acftPos === null || reduced()) { placeAircraft(target); return; }
+    const from = acftPos;
+    const t0 = performance.now();
+    const step = (now) => {
+      const t = Math.min(1, (now - t0) / 350);
+      placeAircraft(from + (target - from) * (1 - Math.pow(1 - t, 3)));
+      if (t < 1) acftRaf = requestAnimationFrame(step);
+    };
+    acftRaf = requestAnimationFrame(step);
+  }
+
+  /* Chart: ground speed against distance for the two decelerations */
+  const canvas = $('chart');
+  let chartQueued = false;
+
+  function scheduleChart() {
+    if (chartQueued) return;
+    chartQueued = true;
+    requestAnimationFrame(() => { chartQueued = false; drawChart(); });
+  }
+
+  // Round tick spacing so the x axis has 4 or 5 ticks
+  function niceStep(max, steps) {
+    return steps.find((s) => max / s <= 4) || steps[steps.length - 1];
+  }
+
+  function drawChart() {
+    if (!simState || !canvas.clientWidth) return;
+    const { speedKt, runwayLeft, shortest, longest, scale } = simState;
+    const css = getComputedStyle(root);
+    const col = (name) => css.getPropertyValue(name).trim();
+    const ink = col('--panel-ink');
+    const dim = col('--panel-dim');
+    const grid = col('--panel-line');
+    const warn = col('--warn');
+    const amber = '#F2B33D';
+
+    const dpr = window.devicePixelRatio || 1;
+    const w = canvas.clientWidth;
+    const h = 160;
+    canvas.width = Math.round(w * dpr);
+    canvas.height = Math.round(h * dpr);
+    const ctx = canvas.getContext('2d');
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.clearRect(0, 0, w, h);
+
+    const m = { l: 40, r: 14, t: 24, b: 36 };
+    const pw = w - m.l - m.r;
+    const ph = h - m.t - m.b;
+    const yMax = Math.ceil(speedKt / 50) * 50;
+    const X = (metres) => m.l + metres / scale * pw;
+    const Y = (kt) => m.t + ph - kt / yMax * ph;
+    ctx.font = '500 10.5px "IBM Plex Mono", ui-monospace, monospace';
+
+    // Beyond the runway end: red region and line
+    ctx.globalAlpha = 0.2;
+    ctx.fillStyle = warn;
+    ctx.fillRect(X(runwayLeft), m.t, m.l + pw - X(runwayLeft), ph);
+    ctx.globalAlpha = 1;
+    ctx.strokeStyle = warn;
+    ctx.lineWidth = 2;
+    ctx.beginPath(); ctx.moveTo(X(runwayLeft), m.t); ctx.lineTo(X(runwayLeft), m.t + ph); ctx.stroke();
+
+    // Grid and ticks
+    ctx.lineWidth = 1;
+    ctx.fillStyle = dim;
+    ctx.textAlign = 'right';
+    ctx.textBaseline = 'middle';
+    for (let kt = 0; kt <= yMax; kt += 50) {
+      ctx.strokeStyle = grid;
+      ctx.beginPath(); ctx.moveTo(m.l, Y(kt)); ctx.lineTo(m.l + pw, Y(kt)); ctx.stroke();
+      ctx.fillText(String(kt), m.l - 6, Y(kt));
+    }
+    ctx.textAlign = 'left';
+    ctx.fillText('kt', 4, m.t - 12);
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'top';
+    const step = niceStep(scale, [100, 200, 250, 400, 500, 1000, 2000]);
+    for (let x = 0; x <= scale; x += step) {
+      ctx.fillText(x.toLocaleString('en-US'), X(x), m.t + ph + 6);
+    }
+    ctx.fillText('distance from touchdown (m)', m.l + pw / 2, m.t + ph + 20);
+
+    // Deceleration curves: v(x) = sqrt(max(0, v0² − 2·a·x)), with a recovered from s = v² / (2a)
+    const v0 = speedKt * 0.5144;
+    const curve = (stop, dash, color) => {
+      const a = v0 * v0 / (2 * stop);
+      ctx.strokeStyle = color;
+      ctx.lineWidth = 2;
+      ctx.setLineDash(dash);
+      ctx.beginPath();
+      for (let i = 0; i <= 60; i++) {
+        const x = stop * i / 60;
+        const kt = Math.sqrt(Math.max(0, v0 * v0 - 2 * a * x)) / 0.5144;
+        if (i) ctx.lineTo(X(x), Y(kt)); else ctx.moveTo(X(x), Y(kt));
+      }
+      ctx.stroke();
+      ctx.setLineDash([]);
+    };
+    curve(shortest, [], amber);
+    curve(longest, [5, 4], ink);
+
+    // Stop points and labels
+    const dot = (x, color) => { ctx.fillStyle = color; ctx.beginPath(); ctx.arc(X(x), Y(0), 4, 0, Math.PI * 2); ctx.fill(); };
+    dot(shortest, amber);
+    dot(longest, ink);
+    ctx.textBaseline = 'alphabetic';
+    const label = (text, x, rise, color) => {
+      const wide = ctx.measureText(text).width;
+      const rightEdge = x + wide + 6 > m.l + pw; // flip near the right edge
+      ctx.fillStyle = color;
+      ctx.textAlign = rightEdge ? 'right' : 'left';
+      ctx.fillText(text, X(x) + (rightEdge ? -6 : 6), Y(0) - rise);
+    };
+    label('shortest', shortest, 8, amber);
+    label('longest', longest, 22, ink);
+
+    // Legend, top right
+    ctx.textBaseline = 'middle';
+    ctx.textAlign = 'right';
+    let lx = w - m.r;
+    [['light braking', [5, 4], ink], ['max braking', [], amber]].forEach(([text, dash, color]) => {
+      ctx.fillStyle = dim;
+      ctx.fillText(text, lx, 9);
+      lx -= ctx.measureText(text).width + 6;
+      ctx.strokeStyle = color;
+      ctx.lineWidth = 2;
+      ctx.setLineDash(dash);
+      ctx.beginPath(); ctx.moveTo(lx - 16, 9); ctx.lineTo(lx, 9); ctx.stroke();
+      ctx.setLineDash([]);
+      lx -= 28;
+    });
+  }
+
+  window.addEventListener('resize', scheduleChart);
+
+  function applyPreset(name) {
+    const p = PRESETS[name];
+    spd.value = p.speed;
+    rem.value = p.runway;
+    document.querySelector('input[name="surf"][value="' + p.surface + '"]').checked = true;
+    ga.checked = false;
+    update();
+  }
+  document.querySelectorAll('[data-preset]').forEach((b) => {
+    b.addEventListener('click', () => applyPreset(b.getAttribute('data-preset')));
+  });
+  ['input', 'change'].forEach((ev) => $('simForm').addEventListener(ev, update));
+  update();
+
+  /* ------------------------------------------------------------------
+     Copy email
+     ------------------------------------------------------------------ */
+
+  const mail = $('mailText');
+  const note = $('copied');
+
+  // Copies the address; `report` (optional) is told "copied" or "failed"
+  function copyEmail(report) {
+    const ok = () => {
+      note.textContent = 'Copied';
+      setTimeout(() => { note.textContent = ''; }, 2000);
+      if (report) report(true);
+    };
+    const fail = () => {
+      const r = document.createRange();
+      r.selectNodeContents(mail);
+      const sel = window.getSelection();
+      sel.removeAllRanges();
+      sel.addRange(r);
+      note.textContent = 'Address selected. Copy it manually.';
+      if (report) report(false);
+    };
+    try { navigator.clipboard.writeText(EMAIL).then(ok, fail); } catch (e) { fail(); }
+  }
+  $('copyBtn').addEventListener('click', () => copyEmail());
+
+  /* ------------------------------------------------------------------
+     Source drawer
+     ------------------------------------------------------------------ */
+
+  const source = $('source');
+  const scriptText = scriptEl ? scriptEl.textContent : '';
+  const scriptLines = scriptText.split('\n').length;
+  let sourceDrawn = false;
+
+  function openSource() {
+    if (!sourceDrawn) { // highlight only the first time it opens
+      $('srcCode').innerHTML = renderCode(scriptText);
+      sourceDrawn = true;
+    }
+    $('srcTitle').textContent = 'This page’s JavaScript · ' + scriptLines + ' lines';
+    openDialog(source, $('srcClose'));
+  }
+  $('srcClose').addEventListener('click', () => closeDialog(source));
+  source.addEventListener('click', (e) => { if (e.target === source) closeDialog(source); });
+  $('readSrc').addEventListener('click', openSource);
+
+  /* ------------------------------------------------------------------
+     Command palette
+     ------------------------------------------------------------------ */
+
+  const palette = $('palette');
+  const palIn = $('palIn');
+  const palList = $('palList');
+  const palMsg = $('palMsg');
+
+  const go = (id) => () => navigate(id);
+  const ITEMS = [
+    { label: 'About', hint: 'Top of descent', run: go('about') },
+    { label: 'Runway project', hint: 'Descent', run: go('work') },
+    { label: 'Practice', hint: 'Approach', run: go('practice') },
+    { label: 'Results', hint: 'Final approach', run: go('results') },
+    { label: 'Under the hood', hint: 'Landing checklist', run: go('under-the-hood') },
+    { label: 'Photos', hint: 'Short final', run: go('photos') },
+    { label: 'Contact', hint: 'Touchdown', run: go('contact') },
+    { label: 'Toggle light/dark theme', hint: 'Theme', run: toggleTheme },
+    { label: 'Copy email address', hint: 'Contact', keepOpen: true, run: copyForPalette },
+    { label: 'Try the alert rules: contaminated, short runway', hint: 'Simulator', run: tryAlertRules },
+    { label: 'View this page’s code', hint: 'Source', run: openSource }
+  ];
+  let shown = []; // items currently listed, best first
+  let active = 0;
+  let msgTimer = 0;
+
+  function copyForPalette() {
+    copyEmail((ok) => {
+      palMsg.textContent = ok ? 'Copied' : 'Copy blocked: ' + EMAIL;
+      clearTimeout(msgTimer);
+      msgTimer = setTimeout(() => { palMsg.textContent = ''; }, 1500);
+    });
+  }
+
+  function tryAlertRules() {
+    navigate('work').then(() => {
+      applyPreset('contaminated-short');
+      document.querySelector('.sim').scrollIntoView();
+    });
+  }
+
+  // Score: +2 for a match next to the previous one, +1 otherwise
+  function scoreOf(hits) {
+    return hits.reduce((sum, at, i) => sum + (i && at === hits[i - 1] + 1 ? 2 : 1), 0);
+  }
+
+  // Wrap matched characters of `text` in <mark>; `hits` are indices into `offset + text`
+  function markHtml(text, hits, offset) {
+    return [].map.call(text, (ch, i) => (hits.indexOf(i + offset) >= 0 ? '<mark>' + esc(ch) + '</mark>' : esc(ch))).join('');
+  }
+
+  function renderPalette() {
+    const query = palIn.value.replace(/\s+/g, '');
+    shown = ITEMS.map((item, order) => {
+      const hits = fuzzy(query, item.label + ' ' + item.hint);
+      return hits && { item, order, hits, score: scoreOf(hits) };
+    }).filter(Boolean).sort((a, b) => b.score - a.score || a.order - b.order);
+    active = 0;
+    palList.innerHTML = shown.length ? shown.map((r, i) => (
+      '<li role="option" id="pal-' + i + '" data-i="' + i + '">' +
+      '<span>' + markHtml(r.item.label, r.hits, 0) + '</span>' +
+      '<small>' + markHtml(r.item.hint, r.hits, r.item.label.length + 1) + '</small></li>'
+    )).join('') : '<li class="none" role="presentation">No matching command</li>';
+    setActive(0);
+  }
+
+  function setActive(i) {
+    if (!shown.length) { palIn.removeAttribute('aria-activedescendant'); return; }
+    active = (i + shown.length) % shown.length;
+    [].forEach.call(palList.children, (li, n) => li.setAttribute('aria-selected', n === active ? 'true' : 'false'));
+    const li = palList.children[active];
+    palIn.setAttribute('aria-activedescendant', li.id);
+    li.scrollIntoView({ block: 'nearest' });
+  }
+
+  function runItem(i) {
+    const r = shown[i];
+    if (!r) return;
+    if (r.item.keepOpen) { r.item.run(); return; }
+    closeDialog(palette);
+    r.item.run();
+  }
+
+  function openPalette() {
+    if (!palette.hidden) return;
+    palIn.value = '';
+    palMsg.textContent = '';
+    renderPalette();
+    openDialog(palette, palIn);
+  }
+
+  palIn.addEventListener('input', renderPalette);
+  palList.addEventListener('click', (e) => {
+    const li = e.target.closest('li[data-i]');
+    if (li) runItem(+li.getAttribute('data-i'));
+  });
+  palList.addEventListener('mousemove', (e) => {
+    const li = e.target.closest('li[data-i]');
+    if (li && +li.getAttribute('data-i') !== active) setActive(+li.getAttribute('data-i'));
+  });
+  $('palClose').addEventListener('click', () => closeDialog(palette));
+  palette.addEventListener('click', (e) => { if (e.target === palette) closeDialog(palette); });
+  $('palBtn').addEventListener('click', openPalette);
+  $('menuBtn').addEventListener('click', openPalette);
+  $('palBtn').textContent = /Mac|iPhone|iPad/.test(navigator.platform) ? '⌘K' : 'Ctrl K';
+
+  /* ------------------------------------------------------------------
+     Keyboard
+     ------------------------------------------------------------------ */
+
+  function typing(el) {
+    return el && (/^(INPUT|TEXTAREA|SELECT)$/.test(el.tagName) || el.isContentEditable);
+  }
+
+  document.addEventListener('keydown', (e) => {
+    const palOpen = !palette.hidden;
+    const srcOpen = !source.hidden;
+    const lbOpen = !lb.hidden;
+
+    if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
+      e.preventDefault();
+      if (palOpen) closeDialog(palette); else if (!srcOpen && !lbOpen) openPalette();
+      return;
+    }
+    if (e.key === '/' && !e.metaKey && !e.ctrlKey && !e.altKey && !typing(e.target) && !palOpen && !srcOpen && !lbOpen) {
+      e.preventDefault();
+      openPalette();
+      return;
+    }
+    if (palOpen) {
+      if (e.key === 'Escape') closeDialog(palette);
+      else if (e.key === 'ArrowDown') { e.preventDefault(); setActive(active + 1); }
+      else if (e.key === 'ArrowUp') { e.preventDefault(); setActive(active - 1); }
+      else if (e.key === 'Enter' && e.target === palIn) { e.preventDefault(); runItem(active); }
+      else trapTab(e, palette);
+    } else if (srcOpen) {
+      if (e.key === 'Escape') closeDialog(source); else trapTab(e, source);
+    } else if (lbOpen) {
+      if (e.key === 'Escape') closeDialog(lb);
+      else if (e.key === 'ArrowLeft') showShot(lbIndex - 1);
+      else if (e.key === 'ArrowRight') showShot(lbIndex + 1);
+      else trapTab(e, lb);
+    }
+  });
+
+  /* ------------------------------------------------------------------
+     Under the hood: code cards and live demos
+     ------------------------------------------------------------------ */
+
+  const SHOWN_FN = { alertLevel, altitudeFor, fuzzy };
+  document.querySelectorAll('[data-fn]').forEach((el) => {
+    el.innerHTML = renderCode(dedent(SHOWN_FN[el.getAttribute('data-fn')].toString()));
+  });
+
+  $('hoodTry').addEventListener('click', () => {
+    document.querySelector('.sim').scrollIntoView();
+    document.querySelector('[data-preset]').focus({ preventScroll: true });
+  });
+
+  // Demo 2: slide the progress, read altitude and phase from the same function the rail uses
+  const hoodP = $('hoodP');
+  function updateHoodAltitude() {
+    const progress = hoodP.value / 100;
+    const reached = phaseMarks.filter((mark) => mark.p <= progress).pop();
+    $('hoodOut').textContent = altitudeFor(progress).toLocaleString('en-US') + ' ft · ' + (reached ? reached.name : 'Cruise');
+  }
+  hoodP.addEventListener('input', updateHoodAltitude);
+
+  // Demo 3: the palette matcher on the seven section names
+  const NAMES = ['About', 'Runway project', 'Practice', 'Results', 'Under the hood', 'Photos', 'Contact'];
+  const hoodQ = $('hoodQ');
+  function updateHoodSearch() {
+    const query = hoodQ.value.replace(/\s+/g, '');
+    $('hoodList').innerHTML = NAMES.map((name) => {
+      const hits = fuzzy(query, name);
+      return '<li' + (hits ? '' : ' class="dim"') + '>' + markHtml(name, hits || [], 0) + '</li>';
+    }).join('');
+  }
+  hoodQ.addEventListener('input', updateHoodSearch);
+  updateHoodSearch();
+
+  /* ------------------------------------------------------------------
+     Start
+     ------------------------------------------------------------------ */
+
+  placeTicks();
+  route();
+  fly();
+
+  /* ------------------------------------------------------------------
+     A tiny public API for the console
+     ------------------------------------------------------------------ */
+
+  // Text of a results row, with the "Predicted" pill kept apart from the words next to it
+  function cellText(el) {
+    const copy = el.cloneNode(true);
+    copy.querySelectorAll('.pill').forEach((p) => { p.textContent += ': '; });
+    copy.querySelectorAll('li').forEach((li) => li.append(' / '));
+    copy.querySelectorAll('small').forEach((sm) => sm.prepend(' '));
+    return copy.textContent.replace(/\s+/g, ' ').replace(/ \/ $/, '').trim();
+  }
+
+  window.steven = Object.freeze({
+    help() {
+      console.log([
+        'steven.help()                                        this list',
+        'steven.alert(speedKt, runwayLeftM, surface, goingAround)  surface: dry | wet | contaminated',
+        'steven.results()                                     education and competitions, as a table',
+        'steven.email                                         contact address'
+      ].join('\n'));
+    },
+    alert(speedKt, runwayLeftM, surface = 'dry', goingAround = false) {
+      const { shortest, longest } = stoppingRange({ speedKt, surface });
+      const { level, margin } = alertLevel({ runwayLeft: runwayLeftM, longest, goingAround });
+      return { level, margin, shortest, longest };
+    },
+    results() {
+      const education = [].map.call(document.querySelectorAll('#results dl.facts > div'), (row) => ({
+        section: 'Education', item: row.querySelector('dt').textContent, detail: cellText(row.querySelector('dd'))
+      }));
+      const contests = [].map.call(document.querySelectorAll('#results .awards li'), (row) => ({
+        section: 'Competition', item: row.querySelector('b').textContent, detail: cellText(row.querySelector('span'))
+      }));
+      console.table(education.concat(contests));
+    },
+    email: EMAIL
+  });
+
+  // Stats line, computed at load
+  $('stats').textContent = '1 HTML file · ' + htmlKB + ' KB · ' + scriptLines + ' lines of JavaScript · 0 dependencies · script ready in ' + Math.round(performance.now()) + ' ms';
+
+  console.log('%cSteven Chen%c  maths · physics · runway alerts', 'font:700 22px Archivo,system-ui;color:#F2A900', 'font:13px ui-monospace;color:#8899aa');
+  console.log('Curious? Try steven.help() in this console.');
+})();
+</script>
+</body>
+</html>
